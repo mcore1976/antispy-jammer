@@ -8,10 +8,11 @@ and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.p
 However my designed is cost optimized and simplified.  
 I do not use programmable signal generator ( AD9833 ) and separated amplifier module ( PAM8403). 
 Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 ) , 
-set of resistors to build 5-bit Digital to Analog converter ( to create sine wave ), 
+set of resistors to build 5-bit Digital to Analogue converter ( to create sine wave ) with R-2R resistor ladder 
+- check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html, 
 two bipolar transistor to create simplest driving unit for piezzoelectric ultrasonic transducers. 
 
-It all can be powered from 5V power source ( it can operate even directly from LiPol 3,7V battery )
+It all can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, the higher the voltage - the more output powe )
 The microcontroller has its fuses set to operate on 9,6MHz clock, that allows to send 32 samples of waveform over DAC with maximum frequency up to 40kHZ.
 In the code it is set for sinusoidal waveform to swing around center frequency of ultrasonic transducer which is 25kHz. 
 The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.
@@ -33,3 +34,6 @@ Component list :
 
 set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent
 some power source 3 - 5,5 Volt 
+
+Code is prepared in AVR-GCC and has to be uploaded with AVRDUDE to the ATTINy chip.
+
