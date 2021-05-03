@@ -45,10 +45,7 @@ const uint8_t  waveshape[] PROGMEM =
 int main(void)
 {
         uint8_t sequence;
-        uint8_t frequency;
         uint8_t dacvalue;
-        uint8_t delayusec;
-
 
         // SET OUTPUT PIN ON ALL OUTPUT PORTS
         
