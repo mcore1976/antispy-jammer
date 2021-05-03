@@ -9,12 +9,12 @@ I do not use programmable signal generator ( AD9833 ) and separated amplifier mo
 Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 ) to compose sinusoidal wave from predefined lookup table and 
 set of resistors to build 5-bit Digital to Analogue converter ( to create sine wave ) with R-2R resistor ladder check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html, also  wo bipolar transistors are used for simple driving unit of piezzoelectric ultrasonic transducers. 
 
-It all can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, the higher the voltage - the more output powe )
-The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock, that allows to send 32 samples of waveform over DAC with maximum frequency up to 27kHZ.
+It all can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, the higher the voltage - the more output power you get ).
+The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock and that allows to send 32 samples of waveform over DAC with maximum frequency up to 27kHZ.
 In the code it is set for sinusoidal waveform to swing around center frequency of ultrasonic transducer which is 25kHz. 
 The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.
-The code is utilizing whole available PINs in PORTB (PB0-PB5) to create DAC for sine wave. 
-The chip may be changed to ATTINY85, but internal clock of this chip cannot go higher than 8MHz thus it is limiting DAC frequency to 23kHz.  I strongly recommend using ATTINY13 as in original design.
+The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave. 
+The chip may be changed to ATTINY85, but internal clock of this chip cannot go higher than 8MHz and that will limit DAC frequency to 23kHz.  I strongly recommend using ATTINY13 as in original design.
 
 Component list :
 
