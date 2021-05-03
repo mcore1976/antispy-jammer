@@ -1,5 +1,5 @@
 # antispy-jammer
-Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 with resistor ladder based DAC and 2 transistors driving piezo ultrasonic transducers
+Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 with resistor ladder based DAC and 2 transistors driving piezo ultrasonic transducers. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
 here https://github.com/y-x-c/wearable-microphone-jamming  
