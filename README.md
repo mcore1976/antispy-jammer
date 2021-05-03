@@ -5,10 +5,15 @@ The project is based on following concept presented here : https://sandlab.cs.uc
 here https://github.com/y-x-c/wearable-microphone-jamming  
 and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.pdf
 
-However my designed is cost optimized and simplified.  I do not use programmable signal generator ( AD9833 ) and separated amplifier module ( PAM8403). 
+However my designed is cost optimized and simplified.  
+I do not use programmable signal generator ( AD9833 ) and separated amplifier module ( PAM8403). 
+
 Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 ) , 
+
 set of resistors to build 5-bit Digital to Analog converter ( to create sine wave ), 
+
 two bipolar transistor to create simplest driving unit for piezzoelectric ultrasonic transducers. 
+
 It all can be powered from 5V power source ( it can operate even directly from LiPol 3,7V battery )
 The microcontroller has its fuses set to operate on 9,6MHz clock, that allows to send 32 samples of waveform over DAC with maximum frequency up to 40kHZ.
 In the code it is set for sinusoidal waveform to swing around center frequency of ultrasonic transducer which is 25kHz. 
