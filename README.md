@@ -8,8 +8,7 @@ and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.p
 However my designed is cost optimized and simplified.  
 I do not use programmable signal generator ( AD9833 ) and separated amplifier module ( PAM8403). 
 Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 ) , 
-set of resistors to build 5-bit Digital to Analogue converter ( to create sine wave ) with R-2R resistor ladder 
-- check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html, 
+set of resistors to build 5-bit Digital to Analogue converter ( to create sine wave ) with R-2R resistor ladder check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html, 
 two bipolar transistor to create simplest driving unit for piezzoelectric ultrasonic transducers. 
 
 It all can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, the higher the voltage - the more output powe )
@@ -21,19 +20,23 @@ The code is utilizing whole available PINs in PORTB (PB0-PB5) to create DAC for 
 
 Component list :
 
-1 x Microcontroller ATTINY13 / ATTINY13A ( or ATTINY 85 ) 
+- 1 x Microcontroller ATTINY13 / ATTINY13A ( or ATTINY 85 ) 
 
-6 x 1K OHm resistors ( lowest wattage )
+- 6 x 1K OHm resistors ( lowest wattage )
 
-4 x 470 Ohm resistors ( lowest wattage )
+- 4 x 470 Ohm resistors ( lowest wattage )
 
-1 x 47 microfarad electrolytic capacitor ( it can be even bigger like 100uF or more)
+- 1 x 47 microfarad electrolytic capacitor ( it can be even bigger like 100uF or more)
 
-1 x 10 microfarad electrolytic capacitor ( it can be 1 - 100uF - for blocking distortions on power lines)
+- 1 x 10 microfarad electrolytic capacitor ( it can be 1 - 100uF - for blocking distortions on power lines)
 
-1 x 100 nanofarad capacitor (it can be 47nf - 470nF - for blocking distortions on power lines)
+- 1 x 100 nanofarad capacitor (it can be 47nf - 470nF - for blocking distortions on power lines)
 
-set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent
+- 1 x BC547 : NPN bipolar transistor
+
+- 1 x BC557 : PNP bipolar transistor
+
+- set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent
 some power source 3 - 5,5 Volt 
 
 Code is prepared in AVR-GCC and has to be uploaded with AVRDUDE to the ATTINy chip.
