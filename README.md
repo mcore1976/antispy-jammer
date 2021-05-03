@@ -16,6 +16,7 @@ It all can be powered from 2,7V - 5,5 V power source ( it can operate even direc
 The microcontroller has its fuses set to operate on 9,6MHz clock, that allows to send 32 samples of waveform over DAC with maximum frequency up to 40kHZ.
 In the code it is set for sinusoidal waveform to swing around center frequency of ultrasonic transducer which is 25kHz. 
 The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.
+The code is utilizing whole available PINs in PORTB (PB0-PB5) to create DAC for sine wave. 
 
 
 Component list :
