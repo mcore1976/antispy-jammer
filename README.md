@@ -35,7 +35,8 @@ Component list :
 - 1 x BC557 : PNP bipolar transistor
 
 - set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent
-some power source 3 - 5,5 Volt 
+
+- some power source 3 - 5,5 Volt (it may be LiPol battery or set of 3xAA batteries)
 
 Code is prepared in AVR-GCC and has to be uploaded with AVRDUDE to the ATTINy chip.
 
