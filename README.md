@@ -14,7 +14,7 @@ The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal c
 In the code it is set for sinusoidal waveform to swing around center frequency of ultrasonic transducer which is 25kHz. 
 The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.
 The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave. 
-The chip may be changed to ATTINY85, but internal clock of this chip cannot go higher than 8MHz and that will limit DAC frequency to 23kHz.  I strongly recommend using ATTINY13 as in original design.
+The chip may be changed to ATTINY85, the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digisparkdevice.  Also number of NOP commands have to be finetuned in the source code to fit correct ~25kHZ frequency.
 
 Component list :
 
