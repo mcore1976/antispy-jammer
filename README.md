@@ -10,11 +10,17 @@ Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 )
 set of resistors to build 5-bit Digital to Analogue converter ( to create sine wave ) with R-2R resistor ladder check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html, also  2 bipolar transistors (NPN+PNP bridge) are used for simple driving unit of piezzoelectric ultrasonic transducers. 
 
 It all can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, the higher the voltage - the more output power you get ).
-The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock and that allows to send 32 samples of waveform over DAC with maximum frequency up to 27kHZ.
-In the code it is set for sinusoidal waveform to swing around center frequency of ultrasonic transducer which is 25kHz. 
+The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock and that allows to send 32 samples of waveform over DAC with maximum frequency up to 27kHZ. The ATTINY85 can go even higher up to 60kHz.
+In this source code it is set for sinusoidal waveform to swing around center frequency of ultrasonic transducer which is 25kHz. 
 The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.
 The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave. 
 The chip may be changed to ATTINY85, the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digisparkdevice.  Also number of NOP commands have to be finetuned in the source code to fit correct ~25kHZ frequency.
+
+Compilation
+
+- use "compileattiny" and "main.c" files for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )
+- use "compileattiny85" and "main2.c" files for ATTINY85 chip  (internal 16MHz PLL clock)
+
 
 Component list :
 
