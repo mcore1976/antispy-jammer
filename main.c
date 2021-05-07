@@ -3,7 +3,7 @@
  * with ultrasonic waves generation
  * based on ATTINY85/ATTINY13 chip, (using ATTINY13 is highly recommended)
  * ATTINY13 fuses have to be set for 9,6 MHz internal clock
- * ATTINY85 fuses have been set to 8MHz but it doesn't give 25kHZ (23kH instead)
+ * ATTINY85 fuses have been set to 16MHz - requires tuning by number of NOP commands beow
  * with Resistor Ladder 5-bit Digital-to-Analog converter
  * and piezzo-electric driver
  * (C) Adam Loboda 2021, adam.loboda@wp.pl
