@@ -24,7 +24,7 @@ Compilation
 
 Component list :
 
-- 1 x Microcontroller ATTINY13 / ATTINY13A ( or ATTINY 85 ) 
+- 1 x Microcontroller ATTINY13 / ATTINY13A - or ATTINY 85  
 
 - 6 x 1K OHm resistors ( lowest wattage )
 
