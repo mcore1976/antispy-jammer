@@ -7,7 +7,7 @@ and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.p
 
 I do not use programmable signal generator ( AD9833 ) and separated amplifier module ( PAM8403). 
 Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 ) to construct sinusoidal wave from predefined lookup table and 
-set of resistors to build 5-bit Digital to Analogue converter ( R-2R resistor ladder DAC : check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html ), also  2 bipolar transistors (NPN+PNP bridge) are used for simple driving unit of piezzoelectric ultrasonic transducers (they introduce distortion so better amplifier is recommended). 
+set of resistors to build 5-bit Digital to Analogue converter ( R-2R resistor ladder DAC : check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html ), also  2 bipolar transistors (NPN+PNP bridge - class B amplifier) are used for simple driving unit of piezzoelectric ultrasonic transducers : https://www.electronics-tutorials.ws/amplifier/amp_6.html (they introduce cross-over distortion so better amplifier is recommended). 
 
 It all can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, but remember the higher the voltage - the more output power you get ).
 The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock and that allows to send 32 samples of waveform over DAC with maximum frequency up to 27kHZ. The ATTINY85 can go even higher up to 60kHz.
