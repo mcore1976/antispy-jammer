@@ -16,7 +16,10 @@ The Sinusoidal waveform parameters have been calculated using Libreoffice Calc /
 The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave. 
 The chip may be changed to ATTINY85, the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digisparkdevice.  Also number of NOP commands have to be finetuned in the source code to fit correct ~25kHZ frequency.
 
-The solution is based on AVR-GCC environment and USBASP and AVRDUDE tools may be used for ATMEL ATTINY chip programming. If you have Windows machine, please follow this tutorial to install necessary packages : http://fab.cba.mit.edu/classes/863.16/doc/projects/ftsmin/windows_avr.html
+The solution is based on AVR-GCC environment and USBASP and AVRDUDE tools may be used for ATMEL ATTINY chip programming. For Linux based machines you would need to setup the environment by installing following packages : "gcc-avr", "binutils-avr" (or sometimes just "binutils"), "avr-libc", "avrdude". For Ubuntu / Linux Mint you may use following command : "sudo apt-get install gcc-avr binutils-avr binutils avr-libc gdb-avr avrdude"
+
+If you have Windows machine, please follow this tutorial to install necessary packages : http://fab.cba.mit.edu/classes/863.16/doc/projects/ftsmin/windows_avr.html
+
 If you do not know how to connect cables for ATMEL ATTINY chip programming please follow my tutorial here : https://www.youtube.com/watch?v=7klgyNzZ2TI
 
 
