@@ -1,0 +1,8 @@
+rm *.elf
+rm *.o
+rm *.hex
+avr-gcc -mmcu=attiny13 -std=gnu99 -Wall -Os -o main5.elf main5.c -w
+avr-objcopy -j .text -j .data -O ihex main5.elf main5.hex
+avr-size --mcu=attiny13 --format=avr main5.elf
+sudo avrdude -c usbasp -p attiny13   -U lfuse:w:0x7A:m  -U hfuse:w:0xFF:m  -U flash:w:"main5.hex":a
+
