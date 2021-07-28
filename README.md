@@ -20,7 +20,7 @@ The chip may be changed to ATTINY85, the internal clock has to be reconfigured t
 
 The main solution is based on AVR-GCC environment and USBASP and AVRDUDE tools may be used for ATMEL ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used. For ARDUINO users there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.
 
-
+-------------------------------------------------------------------------------------
 
 Component list :
 
@@ -54,9 +54,7 @@ OR (RECOMMENDED)
 - 1 x 10K Ohm potentiometer ( or resistor divider )
 
 
-
-
-
+-------------------------------------------------------------------------------------
 
 AVR-GCC compilation and chip flashing :
 
