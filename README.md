@@ -18,7 +18,7 @@ The Sinusoidal waveform parameters have been calculated using Libreoffice Calc /
 The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave or pulse wave depending on source code version. 
 The chip may be changed to ATTINY85, the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digisparkdevice.  Also number of NOP commands have to be finetuned in the source code to fit correct ~25kHZ frequency.
 
-The main solution is based on AVR-GCC environment and USBASP and AVRDUDE tools may be used for ATMEL ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used. For ARDUINO users there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capaby.
+The main solution is based on AVR-GCC environment and USBASP and AVRDUDE tools may be used for ATMEL ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used. For ARDUINO users there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.
 
 
 
@@ -52,6 +52,8 @@ OR (RECOMMENDED)
 - 1 x PAM4803 : 2 x 3Watt Amplifier module ( instead of 2 bipolar transistors) 
 
 - 1 x 10K Ohm potentiometer ( or resistor divider )
+
+
 
 
 
