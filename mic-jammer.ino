@@ -85,9 +85,6 @@ const uint8_t  randomized[] PROGMEM =
 
 
 void setup() {
-         uint16_t sequence;
-        uint8_t pulsewidth, i;
-
 
         // SET OUTPUT PIN ON ALL OUTPUT PORTS
         
@@ -96,19 +93,12 @@ void setup() {
 
 }
 
+
+
 void loop() {
-/*
- * Antispy ultrasonic device for preventing voice recording 
- * with ultrasonic waves generation based on ATTINY85,
- * ATTINY85 fuses have been set to internal PLL clock 16MHz 
- * with Resistor Ladder 5-bit Digital-to-Analog converter
- * and piezzo-electric driver
- * (C) Adam Loboda 2021, adam.loboda@wp.pl
- */
 
-        uint16_t sequence;
-        uint8_t pulsewidth, i;
-
+          uint16_t sequence;
+          uint8_t pulsewidth, i;
 
           // generating WAVE on BIT0-BIT5 DAC outputs
           // 48 = 27,2 kHZ, added values (0-10) to drop randomly within 23-27kHz frequency
