@@ -78,8 +78,8 @@ Compilation
 To compile the code for ATTINY use relevant "compileattinyXXX" script ( example : under linux "chmod +rx compileattiny && ./compileattiny ") for AVR-GCC environment compilation and flashing with AVRDUDE and USBASP cable.  
 
 See the video showing how this device works :
-Old version : https://www.youtube.com/watch?v=YBQ7A4W0bTo
-New version for Arduino (and main4.c / main5.c for ATTINY) : https://youtu.be/JFtU2hQQ2vQ
+- Old version : https://www.youtube.com/watch?v=YBQ7A4W0bTo
+- New version for Arduino (and main4.c / main5.c for ATTINY) : https://youtu.be/JFtU2hQQ2vQ
 
 
 
