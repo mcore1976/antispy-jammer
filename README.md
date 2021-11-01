@@ -31,7 +31,6 @@ Component list :
 
 - 4 x 470 Ohm resistors ( lowest wattage )
 
-
 - 1 x 10 microfarad electrolytic capacitor ( it can be 1 - 100uF - for blocking distortions on power lines)
 
 - 1 x 100 nanofarad capacitor (it can be 47nf - 470nF - for blocking distortions on power lines)
@@ -41,14 +40,6 @@ Component list :
 - some power source 3 - 5,5 Volt (it may be LiPol battery or set of 3xAA batteries)
 
 AND 
-
-- 1 x BC547 : NPN bipolar transistor
-
-- 1 x BC557 : PNP bipolar transistor
-
-- 1 x 47 microfarad electrolytic capacitor ( it can be even bigger like 100uF or more)
-- 
-OR (RECOMMENDED)
 
 - 1 x PAM4803 : 2 x 3Watt Amplifier module ( instead of 2 bipolar transistors) 
 
