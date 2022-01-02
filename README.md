@@ -15,10 +15,20 @@ It all can be powered from 2,7V - 5,5 V power source ( it can operate even direc
 In first version (please do not use it ) the source code is set for sinusoidal waveform to match  center frequency of ultrasonic transducer which is 25kHz (also slightly shifted frequencies are available in the source code for experimentation, but commented out). The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave or pulse wave depending on source code version. 
 In second version the source code is set to send square pulses to the ultrasonic transducers, but center frequency is modulated/shifted with random steps +/-2KHz around the center 25kHz frequency.
 
+---
+
 Available versions :
+
 - AVR-GCC version for direct chip upload - ATTINY13 and ATTINY85 chips. 
 In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digisparkdevice.  Also number of NOP commands is finetuned in the source code to fit exactly ~25kHZ frequency. USBASP and AVRDUDE have to be used for ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used. 
+Please use schematic "antispy-jammer-enhanced-schematic.png" and follwing combinations of source code and compilation script
+ for ATTINY85 : main4.c   +  compileattiny85v2 
+ for ATTINY13 : main5.c   +  compileattinyv2 
+ 
+
 - ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.
+ for DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png" and Arduino script "mic-jammer.ino"
+ 
 
 -------------------------------------------------------------------------------------
 
