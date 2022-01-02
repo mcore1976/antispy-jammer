@@ -11,7 +11,8 @@ However after testing  it turned out that the jamming power is too low because c
 
 The device can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, but remember the higher the voltage - the more output power you get ). The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock and that allows to send 32 samples of waveform over DAC with maximum frequency up to 27kHZ. The ATTINY85 can go even higher up to 60kHz.
 
-In first version (please do not use anymore main.c and main2.c) the source code is set for sinusoidal waveform to match  center frequency of ultrasonic transducer which is 25kHz (also slightly shifted frequencies are available in the source code for experimentation, but commented out). The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave or pulse wave depending on source code version. 
+In initial version (please do not use anymore main.c and main2.c) the source code is set for sinusoidal waveform to match  center frequency of ultrasonic transducer which is 25kHz (also slightly shifted frequencies are available in the source code for experimentation, but commented out). The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave or pulse wave depending on source code version.  I have uploaded this code here only for reference, maybe someone would like to play with it.
+
 In second version the source code is set to send square pulses to the ultrasonic transducers, but center frequency is modulated/shifted with random steps +/-2KHz around the center 25kHz frequency.
 
 ---
@@ -63,10 +64,9 @@ If you do not know how to connect cables for ATMEL ATTINY chip programming pleas
 Compilation
 
 - files "compileattiny" and "main.c" for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )   - initial version please do not use it anymore !
-- files "compileattinyv2" and "main5.c" for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock ) - initial version please do not use it anymore !
-- use "compileattiny85" and "main2.c" files for ATTINY85 chip  (internal 16MHz PLL clock)
+- use "compileattinyv2" and "main5.c" files for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )
+- files "compileattiny85" and "main2.c" for ATTINY85 chip  (internal 16MHz PLL clock)  - initial version please do not use it anymore !
 - use "compileattiny85v2" and "main4.c" files for ATTINY85 chip  (internal 16MHz PLL clock)
-
 
 To compile the code for ATTINY use relevant "compileattinyXXX" script ( example : under linux "chmod +rx compileattiny && ./compileattiny ") for AVR-GCC environment compilation and flashing with AVRDUDE and USBASP cable.  
 
