@@ -62,8 +62,8 @@ If you do not know how to connect cables for ATMEL ATTINY chip programming pleas
 
 Compilation
 
-- use "compileattiny" and "main.c" files for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )   - initial version please do not use it anymore !
-- use "compileattinyv2" and "main5.c" files for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock ) - initial version please do not use it anymore !
+- files "compileattiny" and "main.c" for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )   - initial version please do not use it anymore !
+- files "compileattinyv2" and "main5.c" for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock ) - initial version please do not use it anymore !
 - use "compileattiny85" and "main2.c" files for ATTINY85 chip  (internal 16MHz PLL clock)
 - use "compileattiny85v2" and "main4.c" files for ATTINY85 chip  (internal 16MHz PLL clock)
 
