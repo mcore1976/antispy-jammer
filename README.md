@@ -35,8 +35,8 @@ for ATTINY13 : main5.c   +  compileattinyv2
 Component list :
 
 - 1 x Microcontroller ATTINY13 / ATTINY13A - or ATTINY 85  
-- 6 x 1K OHm resistors ( lowest wattage ) - NOT NEEDED ANYMORE 
-- 4 x 470 Ohm resistors ( lowest wattage ) - NOT NEEDED ANYMORE
+- 6 x 1K OHm resistors ( lowest wattage ) - OPTIONAL (you may attach potentiometer to one of PB0-PB4 ATTINY outputs) 
+- 4 x 470 Ohm resistors ( lowest wattage ) - OPTIONAL (you may attach potentiometer to one of PB0-PB4 ATTINY outputs) 
 - 1 x 10 microfarad electrolytic capacitor ( it can be 1 - 100uF - for blocking distortions on power lines)
 - 1 x 100 nanofarad capacitor (it can be 47nf - 470nF - for blocking distortions on power lines)
 - set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent
