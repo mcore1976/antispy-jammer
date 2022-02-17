@@ -1,34 +1,32 @@
 /*
     wearable microphone jammer
 	
-	Version based on original concept &  development :
-	https://github.com/y-x-c/wearable-microphone-jamming
+    Version based on original concept &  development :
+    https://github.com/y-x-c/wearable-microphone-jamming
 	
-	Boards needed : 
-	Arduino Pro Mini/Micro
-	AD9833 signal generator board
-	PAM8403 audio amplifier module
-	
-    
+    Boards needed : 
+    Arduino Pro Mini/Micro
+    AD9833 signal generator board
+    PAM8403 or better - audio amplifier module + potentiometer
+
     CONNECTION
     --------
     AD9833 PCB to Arduino Pro Mini:
-    SDATA --> pin 11 (MOSI) [note: pin 12 is MISO]
-    SCLK --> pin 13 (SCK)
-    FSYNC --> pin 14 (A0 as AD9833 SS)
-	
-	AD9833 PCB to PAM8403 audio amplifier
-	AOUT --> LEFT AUDIO IN + RIGHT AUDIO IN
-	AGND --> AUDIO GND
-	
-	Remember to power all boards from +5V/GND lines
-	
-	AD8933 code borrowed from Tuomas Nylund function generator project :
-	https://github.com/tuomasnylund/function-gen
-	
+    SDATA --> pin 11 MOSI [note: pin 12 is MISO]
+    SCLK --> pin 13 SCK
+    FSYNC --> pin 14 A0 (as AD9833 SS)
+    DGND --> GND
+    VCC --> VCC
 
+    AD9833 PCB to PAM8403 audio amplifier
+    AOUT --> LEFT AUDIO IN + RIGHT AUDIO IN
+    AGND --> AUDIO GND
 	
+    Remember to power all boards from +5V/GND lines
 	
+    AD8933 code borrowed from Tuomas Nylund function generator project :
+    https://github.com/tuomasnylund/function-gen
+		
 */
 
 #include <Arduino.h>
