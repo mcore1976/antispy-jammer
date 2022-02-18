@@ -1,7 +1,12 @@
 /*
     wearable microphone jammer 
     - ATTINY85 / DIGISPARK version
-    
+   
+    Boards needed : 
+    DIGISPARK
+    AD9833 signal generator board
+    PAM8403 or better - audio amplifier module ( + potentiometer if not using AD_SQUARE modulation)
+   
     CONNECTION
     --------
     AD9833 PCB to DIGISPARK:
