@@ -26,11 +26,16 @@ Also relevant INO scripts and schematic are available for any othe Arduino suppo
 Available versions :
 
 - AVR-GCC versions for direct chip upload - ATTINY13 and ATTINY85 chips :
-In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digisparkdevice.  Also number of NOP commands is finetuned in the source code to fit exactly ~25kHZ frequency. USBASP and AVRDUDE have to be used for ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used. 
+In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digisparkdevice.  Also number of NOP commands is finetuned in the source code to fit exactly ~25kHZ frequency. USBASP and AVRDUDE have to be used for ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used.
+
 Please use schematic "antispy-jammer-enhanced-schematic.png" and following combinations of source code and compilation script :
+
 for ATTINY85 : main4.c   +  compileattiny85v2 ,
+
 for ATTINY13 : main5.c   +  compileattinyv2 
-If you want to play with original design using AD9833 signal generator, please use combination of:  main6.c   +  compileattiny6  and schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png"
+
+If you want to play with original design using AD9833 signal generator, please use combination of:
+main6.c   +  compileattiny6  and schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png"
  
  
 ARDUINO VERSIONS :
