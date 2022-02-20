@@ -6,7 +6,7 @@ here https://github.com/y-x-c/wearable-microphone-jamming
 and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.pdf , however my design is cost optimized and very simplified in comparison to the one above.
 
 In my design do not use programmable signal generator ( AD9833 ) here so the jamming capability may not be such good as original design. 
-Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 ) to create audio wave from predefined lookup table. However if you want to play with original design relevant schamatic and source code is also available.
+Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 ) to create audio wave from predefined lookup table. However if you want to play with original design relevant schematic and source code is also available.
 
 History:
 At the beginning of this project ("main.c" and "main2.c" source files)  there was a set of resistors used to build 5-bit Digital to Analogue converter ( R-2R resistor ladder DAC : check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html ) to create sinusoidal audio wave and audio amplification stage with 2 bipolar transistors (NPN+PNP bridge - class B amplifier) for driving piezzoelectric ultrasonic transducers : https://www.electronics-tutorials.ws/amplifier/amp_6.html (they introduce cross-over distortion  and have very small power). The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave or pulse wave depending on source code version.  I have uploaded this code here only for reference, maybe someone would like to play with it.
@@ -16,7 +16,7 @@ In this version the 25kHz frequency is randomly shifted in 0,4 kHz offsets withi
 
 The device can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, but remember the higher the voltage - the more output power you get ). The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock while ATTINY85 has fuses set to operate on 16MHz clock. 
 
-UPDATE 20.02.2002 
+UPDATE 20.02.2022 
 I have managed to re-create original design with only : ATTINY85 chip + AD9833 signal generator + PAM8403 audio amplifier and set of transducers.
 The code "main6.c" and the script "compileattiny6" is prepared for this purpose. 
 Also relevant INO scripts and schematic are available for any othe Arduino supporting SPI serial bus connectivity.
