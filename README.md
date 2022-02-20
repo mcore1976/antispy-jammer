@@ -14,20 +14,26 @@ However after testing  it turned out that the jamming power is too low because c
 
 The device can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, but remember the higher the voltage - the more output power you get ). The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock and that allows to send 32 samples of waveform over DAC with maximum frequency up to 27kHZ. The ATTINY85 can go even higher up to 60kHz.
 
+UPDATE 20.02.2002 
+I have managed to re-create original design with only : ATTINY85 chip + AD9833 signal generator + PAM8403 audio amplifier and set of transducers.
+The code "main6.c" and the script "compileattiny6" is prepared for this purpose. 
+
 ---
 
 Available versions :
 
-- AVR-GCC version for direct chip upload - ATTINY13 and ATTINY85 chips. 
+- AVR-GCC versions for direct chip upload - ATTINY13 and ATTINY85 chips :
 In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digisparkdevice.  Also number of NOP commands is finetuned in the source code to fit exactly ~25kHZ frequency. USBASP and AVRDUDE have to be used for ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used. 
 Please use schematic "antispy-jammer-enhanced-schematic.png" and following combinations of source code and compilation script :
 for ATTINY85 : main4.c   +  compileattiny85v2 ,
 for ATTINY13 : main5.c   +  compileattinyv2 
+If you want to play with original design using AD9833 signal generator, please use combination of
+for ATTINY85 : main6.c   +  compileattiny6  and please use schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png"
  
-
-- ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.
- for DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png" and Arduino script "mic-jammer.ino".  If you are hoving doubts how to connect and program Digispark board please follow this tutorial : http://digistump.com/wiki/digispark/tutorials/connecting
- 
+ARDUINO VERSIONS :
+- ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.  for DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png" and Arduino script "mic-jammer.ino".  If you are hoving doubts how to connect and program Digispark board please follow this tutorial : http://digistump.com/wiki/digispark/tutorials/connecting
+ - Re-created original version of Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png" and INO  script "mic-jammer-ad9833-digispark.ino" 
+- Re-created original version of Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png" and INO script "mic-jammer-ad9833.ino"
 
 -------------------------------------------------------------------------------------
 
@@ -45,7 +51,7 @@ AND
 
 - 1 x PAM4803 : 2 x 3Watt Amplifier module ( instead of 2 bipolar transistors) 
 - 1 x 10K Ohm potentiometer ( or resistor divider )
-
+- AD9833 signal generator board ( if you want to use original design)
 
 -------------------------------------------------------------------------------------
 
@@ -66,12 +72,15 @@ Compilation
 - use "compileattinyv2" and "main5.c" files for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )
 - files "compileattiny85" and "main2.c" for ATTINY85 chip  (internal 16MHz PLL clock)  - initial version please do not use it anymore !
 - use "compileattiny85v2" and "main4.c" files for ATTINY85 chip  (internal 16MHz PLL clock)
-
+- use "compileattiny6" and "main6.c" files for ATTINY85 chip  (internal 16MHz PLL clock) + AD9833 signal generator
+-
 To compile the code for ATTINY use relevant "compileattinyXXX" script ( example : under linux "chmod +rx compileattiny && ./compileattiny ") for AVR-GCC environment compilation and flashing with AVRDUDE and USBASP cable.  
 
 See the video showing how this device works :
 - Old version : https://www.youtube.com/watch?v=YBQ7A4W0bTo   ( please do not use it , low jamming capability )
 - New version for Arduino (and main4.c / main5.c for ATTINY) : https://youtu.be/JFtU2hQQ2vQ
+- Re-created original version for Digispark : https://youtu.be/PcTkMWJb_Gs
+
 
 
 
