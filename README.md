@@ -5,18 +5,18 @@ The project is based on following concept presented here : https://sandlab.cs.uc
 here https://github.com/y-x-c/wearable-microphone-jamming  
 and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.pdf , however my design is cost optimized and very simplified in comparison to the one above.
 
-I do not use programmable signal generator ( AD9833 ) here so the jamming capability may not be such good as original design. 
-Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 ) to create audio wave from predefined lookup table. 
+In my design do not use programmable signal generator ( AD9833 ) here so the jamming capability may not be such good as original design. 
+Instead I am using the simplest microcontroller ATMEGA ATTINY13A ( or ATTINY85 ) to create audio wave from predefined lookup table. However if you want to play with original design relevant schamatic and source code is also available.
 
+History:
 At the beginning of this project ("main.c" and "main2.c" source files)  there was a set of resistors used to build 5-bit Digital to Analogue converter ( R-2R resistor ladder DAC : check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html ) to create sinusoidal audio wave and audio amplification stage with 2 bipolar transistors (NPN+PNP bridge - class B amplifier) for driving piezzoelectric ultrasonic transducers : https://www.electronics-tutorials.ws/amplifier/amp_6.html (they introduce cross-over distortion  and have very small power). The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.The C code is utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave or pulse wave depending on source code version.  I have uploaded this code here only for reference, maybe someone would like to play with it.
-
-However after testing  it turned out that the jamming power is too low because center frequency 25kHz has to be FM modulated in random manner. Finally I had to use PAM8403 amplifier module ( see diagram with "enhanced" version) for 6 Watt output power and modify lookup table and code to construct square audio wave with pseudo white-noise bias that modulates center frequency of ultrasonic transducers. In this version the 25kHz frequency is randomly shifted in 0,4 kHz offsets within 23-27 kHz range and that gives awesome results in jamming (up to 4-5 meters of jamming). For "main4.c"/"main5.c" version the DAC resistor ladder is not necessary and you can directly connect one of PortB pins to potentiometer input. 
-
-The device can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, but remember the higher the voltage - the more output power you get ). The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock and that allows to send 32 samples of waveform over DAC with maximum frequency up to 27kHZ. The ATTINY85 can go even higher up to 60kHz.
+However after testing  it turned out that the jamming power is too low because center frequency 25kHz has to be FM modulated in random manner. Finally I had to use PAM8403 amplifier module ( see diagram with "enhanced" version) for 6 Watt output power and modify lookup table and code to construct square audio wave with pseudo white-noise bias that modulates center frequency of ultrasonic transducers. In this version the 25kHz frequency is randomly shifted in 0,4 kHz offsets within 23-27 kHz range and that gives awesome results in jamming (up to 4-5 meters of jamming). For "main4.c"/"main5.c" version the DAC resistor ladder is not necessary and you can directly connect one of PortB pins to potentiometer input.  The efficiency is sligthly lower than in original design.
+The device can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, but remember the higher the voltage - the more output power you get ). The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock while ATTINY85 has fuses set to operate on 16MHz clock. 
 
 UPDATE 20.02.2002 
 I have managed to re-create original design with only : ATTINY85 chip + AD9833 signal generator + PAM8403 audio amplifier and set of transducers.
 The code "main6.c" and the script "compileattiny6" is prepared for this purpose. 
+Also relevant INO scripts and schematic are available for any othe Arduino supporting SPI serial bus connectivity.
 
 ---
 
@@ -27,11 +27,13 @@ In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no D
 Please use schematic "antispy-jammer-enhanced-schematic.png" and following combinations of source code and compilation script :
 for ATTINY85 : main4.c   +  compileattiny85v2 ,
 for ATTINY13 : main5.c   +  compileattinyv2 
-If you want to play with original design using AD9833 signal generator, please use combination of
-for ATTINY85 : main6.c   +  compileattiny6  and please use schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png"
+If you want to play with original design using AD9833 signal generator, please use combination of:  main6.c   +  compileattiny6  and schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png"
+ 
  
 ARDUINO VERSIONS :
-- ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.  for DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png" and Arduino script "mic-jammer.ino".  If you are hoving doubts how to connect and program Digispark board please follow this tutorial : http://digistump.com/wiki/digispark/tutorials/connecting
+
+- ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.  For DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png" and Arduino script "mic-jammer.ino".  If you are having doubts how to connect and program Digispark board please follow this tutorial : http://digistump.com/wiki/digispark/tutorials/connecting
+ 
  - Re-created original version of Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png" and INO  script "mic-jammer-ad9833-digispark.ino" 
 - Re-created original version of Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png" and INO script "mic-jammer-ad9833.ino"
 
@@ -39,19 +41,15 @@ ARDUINO VERSIONS :
 
 Component list :
 
-- 1 x Microcontroller ATTINY13 / ATTINY13A - or ATTINY 85  
-- 6 x 1K OHm resistors ( lowest wattage ) - OPTIONAL (you may attach potentiometer to one of PB0-PB4 ATTINY outputs) 
-- 4 x 470 Ohm resistors ( lowest wattage ) - OPTIONAL (you may attach potentiometer to one of PB0-PB4 ATTINY outputs) 
-- 1 x 10 microfarad electrolytic capacitor ( it can be 1 - 100uF - for blocking distortions on power lines)
+- 1 x Microcontroller ATTINY13 / ATTINY13A - or ATTINY 85, DIGISPARK board or any other Arduino may be used instead of microcontroller
+- 1 x 47 microfarad electrolytic capacitor ( it can be 1 - 100uF - for blocking distortions on power lines)
 - 1 x 100 nanofarad capacitor (it can be 47nf - 470nF - for blocking distortions on power lines)
 - set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent
 - some power source 3 - 5,5 Volt (it may be LiPol battery or set of 3xAA batteries)
-
-AND 
-
 - 1 x PAM4803 : 2 x 3Watt Amplifier module ( instead of 2 bipolar transistors) 
-- 1 x 10K Ohm potentiometer ( or resistor divider )
+- 1 x 10K Ohm potentiometer ( or resistor divider ) may be put between ATTINY85/ARDUINO/AD9833 audio output pins and PAM8403 audio input pins 
 - AD9833 signal generator board ( if you want to use original design)
+
 
 -------------------------------------------------------------------------------------
 
@@ -69,11 +67,15 @@ If you do not know how to connect cables for ATMEL ATTINY chip programming pleas
 Compilation
 
 - files "compileattiny" and "main.c" for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )   - initial version please do not use it anymore !
-- use "compileattinyv2" and "main5.c" files for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )
 - files "compileattiny85" and "main2.c" for ATTINY85 chip  (internal 16MHz PLL clock)  - initial version please do not use it anymore !
+
+My design : 
+- use "compileattinyv2" and "main5.c" files for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )
 - use "compileattiny85v2" and "main4.c" files for ATTINY85 chip  (internal 16MHz PLL clock)
+- 
+Original re-created design :
 - use "compileattiny6" and "main6.c" files for ATTINY85 chip  (internal 16MHz PLL clock) + AD9833 signal generator
--
+
 To compile the code for ATTINY use relevant "compileattinyXXX" script ( example : under linux "chmod +rx compileattiny && ./compileattiny ") for AVR-GCC environment compilation and flashing with AVRDUDE and USBASP cable.  
 
 See the video showing how this device works :
