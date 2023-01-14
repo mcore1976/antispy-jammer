@@ -30,7 +30,7 @@ In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no D
 
 Please use schematic "antispy-jammer-enhanced-schematic.png" and following combinations of source code and compilation script :
 
-for ATTINY85 : main4.c   +  compileattiny85v2 ,
+for ATTINY85 : main4.c   +  compileattiny85v2 , main7.c   +  compileattiny85v3 
 
 for ATTINY13 : main5.c   +  compileattinyv2 
 
