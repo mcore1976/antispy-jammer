@@ -109,11 +109,7 @@ int main(void)
            // send HIGH VOLTAGE - this time square wave
            // PB0 may serve as GND for PAM8403 module audio input
            OUTPUTPORT = 0b00000110; 
-           
-           // send amplitude modulated square wave through Digital to Analog Converter - resistor ladder
-           // PB0 may serve as GND for PAM8403 module audio input
-           // OUTPUTPORT = pulsewidth; 
-           
+                      
            
            // now delay to achieve desired frequency
            for(i=0; i<pulsewidth; i++)
