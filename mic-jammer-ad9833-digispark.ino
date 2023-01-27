@@ -386,6 +386,9 @@ void setup()
 }
 
 void loop() {
-  ad9833_set_mode(AD_SQUARE);
+    
+ // setting random PHASE for amplitude modulation
+  ad9833_set_phase(0, random(0,4096) );
+ // setting random FREQUENCY from the range 24-26kHz     
   ad9833_set_frequency(0, random(24000, 26000) );
 }
