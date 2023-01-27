@@ -20,6 +20,7 @@ UPDATE 20.02.2022
 I have managed to re-create original design with only : ATTINY85 chip + AD9833 signal generator + PAM8403 audio amplifier and set of transducers.
 The code "main6.c" and the script "compileattiny6" is prepared for this purpose. 
 Also relevant INO scripts and schematic of this re-created design are available for any other Arduino supporting SPI serial bus connectivity.
+The difference to original programming is that together with random FREQUENCY shifting I am also using random PHASE shifting which gives better effectivenes for high-end phones despite the signal is a little bit audible.. 
 
 ---
 
