@@ -86,7 +86,7 @@ My design :
 - use "compileattiny85v3" and "main7.c" files for ATTINY85 chip  - AM/FM signal modulation (internal 16MHz PLL clock)
  
 
-Original re-created design :
+Original re-created design + enhancements for better jamming effectivenes  :
 - use "compileattiny6" and "main6.c" files for ATTINY85 chip  (internal 16MHz PLL clock) + AD9833 signal generator
 
 To compile the code for ATTINY use relevant "compileattinyXXX" script ( example : under linux "chmod +rx compileattiny && ./compileattiny ") for AVR-GCC environment compilation and flashing with AVRDUDE and USBASP cable.  
