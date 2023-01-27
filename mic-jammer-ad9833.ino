@@ -301,12 +301,14 @@ void setup()
   ad9833_init();
   delay(15);
 
-  //set gen to SINE
-  ad9833_set_mode(AD_SINE);
+  //set gen to SQUARE
+  ad9833_set_mode(AD_SQUARE);
   ad9833_set_frequency(0, 25000);
 }
 
 void loop() {
-  ad9833_set_mode(AD_SINE);
+ // setting random PHASE for amplitude modulation
+  ad9833_set_phase(0, random(0, 4096) );
+ // setting random FREQUENCY from the range 24-26kHz     
   ad9833_set_frequency(0, random(24000, 26000) );
 }
