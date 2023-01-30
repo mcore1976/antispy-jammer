@@ -36,11 +36,6 @@ void setup() {
 
 void loop() {
 
-
-       uint16_t sequence;
-        uint8_t pulsewidth,  i;
-
-
           // generating WAVE on BIT0-BIT5 DAC outputs
           // randomized length of the pulse to fit within 23-27kHz frequency
           // modulation is PWM like but works
