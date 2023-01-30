@@ -36,17 +36,16 @@ void setup() {
 
 void loop() {
 
-          // generating WAVE on BIT0-BIT5 DAC outputs
-          // randomized length of the pulse to fit within 23-27kHz frequency
-          // modulation is PWM like but works
- 
-          pulsewidth = 20 + random(0, 50)) ;
+          // generating SQUARE WAVE on PB1 and PB2 outputs
+          // randomized length of the pulse - PWM but with the center of 25KHz frequency
+          pulsewidth = 20 + random(0, 50) ;
    
  
           // sending bulk of these pulses before switching frequency and amplitude
+          // you may play with number of pulses send - default is 100
+         
           for(sequence=0; sequence<100; sequence++)
            {
-
 
            // send HIGH VOLTAGE - this time square wave
            // PB0 may serve as GND for PAM8403 module audio input
