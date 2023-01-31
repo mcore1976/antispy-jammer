@@ -36,11 +36,11 @@ int main(void)
        { 
 
           // generating WAVE on BIT0-BIT5 DAC outputs
-          // randomized length of the pulse to fit within 23-27kHz frequency
+          // randomized length of the pulse to create the noise
           pulsewidth = 20 + (rand() % 50) ;
    
-   
           // randomized amplitude of the pulse to fit within 5-bit value
+          // you may modify the bias
           amplitude = rand() % 16;
           amplitude = amplitude +15;
  
@@ -67,7 +67,8 @@ int main(void)
 
            // send LOW VOLTAGE - this time square wave
            OUTPUTPORT = 0; 
-           // now delay to achieve desired frequency
+           // now delay to achieve desired frequency. 
+           // you may modify this value to achieve center 25kHz
            for(i=0; i<(85 - pulsewidth); i++)
              {
               asm volatile (
