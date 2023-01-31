@@ -46,11 +46,10 @@ void loop() {
          
           for(sequence=0; sequence<100; sequence++)
            {
-
            // send HIGH VOLTAGE - this time square wave
            // PB0 may serve as GND for PAM8403 module audio input
+           // so we are clearing this bit
            OUTPUTPORT = 0b00000110;
-
            // now delay to achieve desired frequency
            for(i=0; i<pulsewidth; i++)
              {
@@ -60,10 +59,11 @@ void loop() {
               };
            //
 
+                   
            // send LOW VOLTAGE - this time square wave
-           OUTPUTPORT = 0; 
-           
+           OUTPUTPORT = 0;          
            // now delay to achieve desired frequency
+           // you may adjust this value to get to 25kHz of the transducers
            for(i=0; i<(85 - pulsewidth); i++)
              {
               asm volatile (
