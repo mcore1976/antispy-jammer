@@ -23,18 +23,18 @@
 
 
 void setup() {
-         uint16_t sequence;
-        uint8_t pulsewidth, i;
 
-
-        // SET OUTPUT PIN ON ALL OUTPUT PORTS
-        
+        // SET OUTPUT PIN ON ALL OUTPUT PORTS      
         OUTPUTPORTCTRL = 0b00011111;  //set all 5 LOWER bit pins as output
         OUTPUTPORT     = 0b00000000;  //set all 5 LOWER bit pins to ZERO
 
 }
 
 void loop() {
+          // initializing variables for loops
+          uint16_t sequence;
+          uint8_t pulsewidth, i;
+
 
           // generating SQUARE WAVE on PB1 and PB2 outputs
           // randomized length of the pulse - PWM but with the center of 25KHz frequency
