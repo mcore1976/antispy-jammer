@@ -38,13 +38,13 @@ void loop() {
 
           // generating SQUARE WAVE on PB1 and PB2 outputs
           // randomized length of the pulse - PWM but with the center of 25KHz frequency
-          pulsewidth = 20 + random(0, 50) ;
+          pulsewidth = 10 + random(0, 60) ;
    
  
           // sending bulk of these pulses before switching frequency and amplitude
-          // you may play with number of pulses send - default is 100
+          // you may play with number of pulses send - default is 50
          
-          for(sequence=0; sequence<100; sequence++)
+          for(sequence=0; sequence<50; sequence++)
            {
            // send HIGH VOLTAGE - this time square wave
            // PB0 may serve as GND for PAM8403 module audio input
