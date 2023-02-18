@@ -4,7 +4,8 @@
  * ATTINY85 fuses have been set to internal PLL clock 16MHz 
  * with Resistor Ladder 5-bit Digital-to-Analog converter
  * and piezzo-electric driver
- * THIS VERSION OPERATES ON 40 KHZ !!!
+ * THIS VERSION OPERATES ON 40 KHZ !!! 
+ * USE 40KHZ TRANSDUCERS WITH THIS CODE
  * (C) Adam Loboda 2021, adam.loboda@wp.pl
  */
 
@@ -20,7 +21,7 @@
 
  
 // created in Excell / Libreoffice - will randomly 
-// swing pulse width to achieve noise effect around the center 25kHz frequrency
+// swing pulse width to achieve noise effect around the center frequrency 40 KHz
 const uint8_t  randomized[] PROGMEM = 
   {
 9,36,31,23,9,11,18,15,34,23,34,42,40,39,25,16,39,10,44,34,13,37,15,14,26,
@@ -188,9 +189,8 @@ int main(void)
        { 
 
           // generating WAVE on BIT0-BIT5 DAC outputs
-          // added values (0-10) to drop randomly within 38-42KHz frequency
-          // random values are taken from PROGMEM lookup table, step is 0,4 kHZ
-
+          // values ensure random 38-42KHz frequency
+      
           for(sequence=0; sequence<4096; sequence++)
            {
            // calculate pulse width 
