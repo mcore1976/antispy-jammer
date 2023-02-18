@@ -22,7 +22,7 @@
 #define  OUTPUTPORTCTRL    DDRB
 
 // created in Excell / Libreoffice - will randomly 
-// swing pulse width to achieve noise effect around the center 25kHz frequrency
+// swing pulse width to achieve noise effect around the center 40 KHz frequrency
 const uint8_t  randomized[] PROGMEM = 
   {
 9,36,31,23,9,11,18,15,34,23,34,42,40,39,25,16,39,10,44,34,13,37,15,14,26,
@@ -197,7 +197,9 @@ void loop() {
            pulsewidth = pgm_read_byte(randomized + sequence);
 
              // sending a bulk of pulses with defined pulsewidth 
-             // you may play with number (40) of pulses for better effect of jamming
+             // you may play with number of pulses for better effect of jamming
+             // (value 40 means every 1/1000 seconds there will be change
+             // in the signal shape )
              for(bulk=0; bulk<40; bulk++)
              {
               // send HIGH VOLTAGE - this time square wave
