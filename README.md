@@ -24,9 +24,10 @@ I have managed to re-create original design with only : ATTINY85 chip + AD9833 s
 The code "main6.c" and the script "compileattiny6" is prepared for this purpose, the diagram will be "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png". 
 Also relevant INO scripts and schematic of this re-created design are available for any other Arduino supporting SPI serial bus connectivity. For ARDUINO version please use diagrams "arduino-mic-supresor-ultrasonic-v2.png" and "arduino-mic-supresor-ultrasonic-v2-pro-mini.png"
 
-UPDATE 27.01.2022 
+UPDATE 27.01.2023 
 The difference to original programming is that together with random FREQUENCY shifting I am also using random PHASE shifting which gives better effectivenes for high-end phones despite the signal is a little bit audible..  This is only valid for versions which use  AD9833 signal generator.
 
+IF YOU WANT TO INCREASE JAMMING CAPABILITY USE BETTER AUDIO AMPLIFIER LIKE TPA3116 WHICH GIVES 50WATT OF AUDIO POWER ANF MORE TRANSDUCERS LIKE 50 PER AUDIO CHANNEL ! 
 ---
 
 Available versions :
