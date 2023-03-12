@@ -100,7 +100,7 @@ See the video showing how this device works :
 - Old version : https://www.youtube.com/watch?v=YBQ7A4W0bTo   ( please do not use it , low jamming capability )
 - New version for Arduino (and main4.c / main5.c for ATTINY) : https://youtu.be/JFtU2hQQ2vQ
 - Re-created original version for Digispark : https://youtu.be/PcTkMWJb_Gs
-
+- The newest version microphone jamming beast with TPA3116D2 audio amplifier board - jamms even iPhones : https://youtu.be/8RgoYlrgW4s
 
 
 
