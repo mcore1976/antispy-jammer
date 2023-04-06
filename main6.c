@@ -430,14 +430,14 @@ void main()
 
   // setting PULSE as output shape
  //   ad9833_set_mode(AD_SQUARE);
-    ad9833_set_mode(AD_SINE);
+    ad9833_set_mode(AD_SQUARE);
     
   while (1) 
    {
 
  
            // setting random PHASE for amplitude modulation
-           // ad9833_set_phase(0, (double)(rand() % 4096) );
+           ad9833_set_phase(0, (double)(rand() % 4096) );
     
            // trying to achieve random 24000 - 26000 value here for generator frequency
            ad9833_set_frequency(0, (double)(24000 + (rand() % 2000)) );
