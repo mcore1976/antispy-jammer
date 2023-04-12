@@ -421,8 +421,8 @@ void main()
      );
 
 
-  //set gen to TRIANGLE initially
-  ad9833_set_mode(AD_TRIANGLE);
+  //set gen to SQUARE initially
+  ad9833_set_mode(AD_SQUARE);
   ad9833_set_frequency(0, 26000);
 
   // neverending loop with random generator frequency change
