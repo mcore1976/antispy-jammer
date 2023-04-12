@@ -376,8 +376,8 @@ void setup()
   ad9833_init();
   delay(15);
 
-  //set gen to TRIANGLE
-  ad9833_set_mode(AD_TRIANGLE);
+  //set gen to SQUARE
+  ad9833_set_mode(AD_SQUARE);
   ad9833_set_frequency(0, 26000);
 }
 
