@@ -2,12 +2,12 @@
  * Antispy ultrasonic device for preventing voice recording 
  * with ultrasonic waves generation based on ARDUINO DIGISPARK,
  * connections : 
- * PAM8403 module AUDIO LEFT INPUT connected to Port 2 of DIGISPARK
- * PAM8403 module AUDIO RIGHT INPUT connected to Port 1 of DIGISPARK
- * PAM8403 module AUDIO GROUND INPUT connected to Port 0 of DIGISPARK
- * 10 piezzo-electric ultrasonic transducers connected in parallel to PAM8403 OUTPUT LEFT
- * 10 piezzo-electric ultrasonic transducers connected in parallel to PAM8403 OUTPUT RIGHT
- * (C) Adam Loboda 2021, adam.loboda@wp.pl
+ * DIGISPARK HAS TO BE POWERED FROM 12V THROUGH Vin PIN
+ * TPA3116 HAS TO BE CONNECTED TO 12V AND GND 
+ * TPA3116 module INPUT"+" connected to Port 2 of DIGISPARK
+ * TPA3116 module INPUT"-" connected to Port 0 of DIGISPARK
+ * at least 10 piezzo-electric ultrasonic transducers connected in parallel to TPA3116 OUTPUT PINS
+ * (C) Adam Loboda 2023, adam.loboda@wp.pl
  */
 
 #include <stdint.h>
