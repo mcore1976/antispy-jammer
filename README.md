@@ -61,9 +61,8 @@ You only need the ATTINY13 or ATTINY85 chip not full Arduino module therefore th
 
 Version A : Please use schematic "antispy-jammer-enhanced-schematic.png" and following combinations of source code and compilation script :
 
-for ATTINY85 : main4.c   +  compileattiny85v2 , main7.c   +  compileattiny85v3 
-
-for ATTINY13 : main5.c   +  compileattinyv2 , main8.c  +   compileattinyv3
+- for ATTINY85 : main4.c   +  compileattiny85v2 , main7.c   +  compileattiny85v3 
+- for ATTINY13 : main5.c   +  compileattinyv2 , main8.c  +   compileattinyv3
 
 Version B : This version uses AD9833 signal generator therefore please use combination of  "main6.c"   +  "compileattiny6"  and schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png" or the one with TPA3116D2 - "arduino-mic-supresor-ultrasonic-v2-ATTINY85-TPA3116.png" .
  
