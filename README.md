@@ -55,7 +55,7 @@ Available versions of the source code :
 
 -------------------------------------------------------------------------------------
 
-AVR-GCC VERSION
+AVR-GCC VERSIONS
 
 You only need the ATTINY13 or ATTINY85 chip not full Arduino module therefore the device can be smaller. In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digispark device.  Also number of NOP commands is finetuned in the source code to fit exactly ~25kHZ frequency. USBASP and AVRDUDE have to be used for ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used.
 
@@ -77,7 +77,7 @@ Version B:  Digispark with AD9833 signal generator - please use schematic "ardui
 
 -------------------------------------------------------------------------------------
 
-AVR-GCC compilation and chip flashing :
+AVR-GCC compilation information and chip flashing :
 
 "mainXX.c" source code is prepared in AVR-GCC and has to be uploaded with AVRDUDE to the ATTINY85/ATTINY13 chip.
 
@@ -105,6 +105,10 @@ Version B (with AD9833 board) :
 - use "compileattiny6" and "main6.c" files for ATTINY85 chip  (internal 16MHz PLL clock) + AD9833 signal generator
 
 To compile the code for ATTINY use relevant "compileattinyXXX" script ( example : under linux "chmod +rx compileattiny && ./compileattiny ") for AVR-GCC environment compilation and flashing with AVRDUDE and USBASP cable.  
+
+
+-------------------------------------------------------------------------------------
+
 
 See the video showing how this device works :
 - Old version : https://www.youtube.com/watch?v=YBQ7A4W0bTo   ( please do not use it , low jamming capability )
