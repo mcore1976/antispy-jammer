@@ -1,9 +1,9 @@
 # antispy-jammer
-Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 with amplifier PAM8403 module driving piezo ultrasonic transducers. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.
+Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
 here https://github.com/y-x-c/wearable-microphone-jamming  
-and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.pdf , however my design evolved and using AD9833 and 25kHZ transducers is the only similarity from the original project.  
+and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.pdf , however my design evolved and using AD9833 and 25kHZ transducers is the only similarity with the original project.  
 
 There are two versions of the jammer :
 - version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people
@@ -20,7 +20,7 @@ However after testing first prototype  it turned out that the jamming power is t
 Files "main4.c"/"main5.c"  are using Digital to Analog Converter for FM 25kHz signal modulation only , while files "main7.c"/"main8.c" are using random PWM and amplitude modulation to generate the noise (in test main7.c/main8.c work better than main4.c/main5.c files). 
 If using files with AM modulation please tune signal gain using potentiometer not to get it distorted.
 
-The device can be powered from 2,7V - 5,5 V power source ( it can operate even directly from LiPol 3,7V battery, but remember the higher the voltage - the more output power you get ). The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock while ATTINY85 has fuses set to operate on 16MHz clock. 
+The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock while ATTINY85 has fuses set to operate on 16MHz clock as in the Digispark module. 
 
 
 History of version B of the jammer :
@@ -48,7 +48,7 @@ for ATTINY85 : main4.c   +  compileattiny85v2 , main7.c   +  compileattiny85v3
 
 for ATTINY13 : main5.c   +  compileattinyv2 , main8.c  +   compileattinyv3
 
-Version B : If you want to play with original design using AD9833 signal generator, please use combination of  "main6.c"   +  "compileattiny6"  and schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png" or the one with TPA3116D2.
+Version B : This version uses AD9833 signal generator therefore please use combination of  "main6.c"   +  "compileattiny6"  and schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png" or the one with TPA3116D2.
  
  
 ARDUINO VERSIONS :
