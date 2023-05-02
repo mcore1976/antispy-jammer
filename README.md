@@ -55,7 +55,7 @@ ARDUINO VERSIONS :
 
 Version A :  ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.  For DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png"  or "mic-jammer-TPA3116D2.png"  and Arduino script "mic-jammer.ino".  If you are having doubts how to connect and program Digispark board please follow this tutorial : http://digistump.com/wiki/digispark/tutorials/connecting
  
-Version B:  Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png"  or "mic-jammer-AD9833-TPA3116D2.png"  and INO  script "mic-jammer-ad9833-digispark.ino". I f you want to use different board than Digispark like Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino". Remember to use TPA3116D2 instead PAM8403 for better jamming capability.
+Version B:  Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png"  or "mic-jammer-AD9833-TPA3116D2.png"  and INO  script "mic-jammer-ad9833-digispark.ino". If you want to use different board than Digispark like Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino". Remember to use TPA3116D2 instead PAM8403 for better jamming capability.
 
 -------------------------------------------------------------------------------------
 
