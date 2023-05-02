@@ -40,7 +40,7 @@ IF YOU WANT TO INCREASE JAMMING CAPABILITY USE BETTER AUDIO AMPLIFIER LIKE TPA31
 Available versions of the source code :
 
 - AVR-GCC versions for direct chip upload - ATTINY13 and ATTINY85 chips :
-In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digisparkdevice.  Also number of NOP commands is finetuned in the source code to fit exactly ~25kHZ frequency. USBASP and AVRDUDE have to be used for ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used.
+In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digispark device.  Also number of NOP commands is finetuned in the source code to fit exactly ~25kHZ frequency. USBASP and AVRDUDE have to be used for ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used.
 
 Version A : Please use schematic "antispy-jammer-enhanced-schematic.png" and following combinations of source code and compilation script :
 
@@ -48,14 +48,14 @@ for ATTINY85 : main4.c   +  compileattiny85v2 , main7.c   +  compileattiny85v3
 
 for ATTINY13 : main5.c   +  compileattinyv2 , main8.c  +   compileattinyv3
 
-Version B : This version uses AD9833 signal generator therefore please use combination of  "main6.c"   +  "compileattiny6"  and schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png" or the one with TPA3116D2.
+Version B : This version uses AD9833 signal generator therefore please use combination of  "main6.c"   +  "compileattiny6"  and schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png" or the one with TPA3116D2 - "arduino-mic-supresor-ultrasonic-v2-ATTINY85-TPA3116.png" .
  
  
 ARDUINO VERSIONS :
 
-Version A :  ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.  For DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png" and Arduino script "mic-jammer.ino".  If you are having doubts how to connect and program Digispark board please follow this tutorial : http://digistump.com/wiki/digispark/tutorials/connecting
+Version A :  ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.  For DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png"  or "mic-jammer-TPA3116D2.png"  and Arduino script "mic-jammer.ino".  If you are having doubts how to connect and program Digispark board please follow this tutorial : http://digistump.com/wiki/digispark/tutorials/connecting
  
-Version B:  Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png" and INO  script "mic-jammer-ad9833-digispark.ino" 
+Version B:  Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png"  or "mic-jammer-AD9833-TPA3116D2.png"  and INO  script "mic-jammer-ad9833-digispark.ino" 
 - Re-created original version of Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino"
 
 -------------------------------------------------------------------------------------
