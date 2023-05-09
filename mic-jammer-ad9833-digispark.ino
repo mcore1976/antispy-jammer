@@ -552,8 +552,10 @@ void setup()
   delay(15);
 
   //set gen to SQUARE
+  // you may also experiment with AD_SINE or AD_TRIANGLE for better effects
   ad9833_set_mode(AD_SQUARE);
   ad9833_set_frequency(0, 26000);
+    
 }
 
 void loop() {
