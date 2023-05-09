@@ -17,13 +17,15 @@
     FSYNC --> pin 14 A0 (as AD9833 SS)
     DGND --> GND
     VCC --> VCC
+    
+    AD9833 PCB to TPA3116 AUDIO AMPLIFIER
+    AOUT  --> LEFT AUDIO IN + RIGHT AUDIO IN
+    AGND  --> AUDIO GND
 
-    AD9833 PCB to PAM8403 audio amplifier
-    AOUT --> LEFT AUDIO IN + RIGHT AUDIO IN
-    AGND --> AUDIO GND
-	
-    Remember to power all boards from +5V/GND lines
-	
+    REMEMBER TO CONNECT AD9833 TO 5V AND GND PINS OF ARDUINO BOARD
+    ARDUINO HAS TO BE POWERED FROM 12V THROUGH Vin PIN
+    TPA3116 HAS TO BE CONNECTED TO 12V AND GND
+        
     AD8933 code borrowed from Tuomas Nylund function generator project :
     https://github.com/tuomasnylund/function-gen
 		
@@ -477,9 +479,11 @@ void setup()
   delay(15);
 
   //set gen to SQUARE
+  // you may also experiment with AD_SINE or AD_TRIANGLE
   ad9833_set_mode(AD_SQUARE);
   // set some center frequency for the start
   ad9833_set_frequency(0, 26000);
+	
 }
 
 void loop() {
