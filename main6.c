@@ -11,11 +11,11 @@
     DGND  --> GND
     VCC   --> VCC 
 
-    AD9833 PCB to PAM 8403
+    AD9833 PCB to PAM 8403 / TPA3116D2
     AOUT  --> LEFT AUDIO IN + RIGHT AUDIO IN
     AGND  --> AUDIO GND
 
-    REMEMBER TO CONNECT BOTH PAM8403 + AD9833 TO VCC/5V AND GND
+    REMEMBER TO CONNECT AD9833 TO VCC/5V AND GND
 
     
 */
@@ -593,12 +593,9 @@ void main()
 
 
   //set gen to SQUARE initially
+  // you may experiment with other types AD_TRIANGLE or AD_SINE
   ad9833_set_mode(AD_SQUARE);
   ad9833_set_frequency(0, 26000);
-
-  // neverending loop with random generator frequency change
-  srand(1234);  // set random function seed
-
  
     
   while (1) 
