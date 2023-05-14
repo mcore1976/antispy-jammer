@@ -32,6 +32,7 @@ Also relevant INO scripts and schematic of this re-created design are available 
 27.01.2023 - Updated original programming - together with random FREQUENCY shifting I am also using random PHASE shifting which gives better effectivenes for high-end phones despite the signal is a little bit audible..  This is only valid for versions which use  AD9833 signal generator.
 
 12.04.2023 - The code for Digispark/ATTINY85 + AD9833 + TPA3116/PAM8403 was changed to support INFRASOUND 5-25Hz random FM modulation over 25KHz ULTRASOUND carrier. This gives the best result for jamming iPhones and on the high-end phones and the signal is barely audible by human ear when demodulated on obstacles. However such approach cannot be introduced into the design which does not use AD9833 due to speed limitation of the ATTINY85 chip. If you want to jam iPhones I would suggest to use design : Digispark + AD9833 + TPA3116 + at least 12 transducers
+The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code ) which gives best overall jamming result, but you can easily change it to less audible option SINUSOIDAL WAVE ( AD_SINE ) or TRIANGLE WAVE ( AD_TRIANGLE ). Sinusoidal signal has lower jamming capability but it is almost not audible at all.
 
 
 IF YOU WANT TO INCREASE JAMMING CAPABILITY USE BETTER AUDIO AMPLIFIER LIKE TPA3116D2 WHICH GIVES 50WATT OF AUDIO POWER AND MORE TRANSDUCERS LIKE 50 PER AUDIO CHANNEL ! 
