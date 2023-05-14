@@ -1,5 +1,5 @@
 # antispy-jammer
-Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.
+Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
 here https://github.com/y-x-c/wearable-microphone-jamming  
