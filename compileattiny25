@@ -1,0 +1,9 @@
+rm *.elf
+rm *.o
+rm *.hex
+avr-gcc -mmcu=attiny25 -std=gnu99 -Wall -Os -o main6.elf main6.c -w
+avr-objcopy -j .text -j .data -O ihex main6.elf main6.hex
+avr-size --mcu=attiny25 --format=avr main6.elf
+# fuses for ATTINY25 internal PLL clock 16MHZ , no DIV8 = Digispark setting 
+sudo avrdude -c usbasp -p attiny25   -U lfuse:w:0xF1:m  -U hfuse:w:0xDD:m  -U flash:w:"main6.hex":a
+
