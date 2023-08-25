@@ -309,7 +309,12 @@ void setup()
   ad9833_set_mode(AD_SINE);
   // set some center frequency for the start 41KHZ
   ad9833_set_frequency(0, 41000);
+
+  // set random seed for pseudonumbers generation
+  randomSeed(1234);
+   
 }
+
 
 void loop() {
 
