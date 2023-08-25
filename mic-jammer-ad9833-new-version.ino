@@ -303,9 +303,9 @@ void setup()
   ad9833_init();
   delay(15);
 
-  //set gen to SQUARE
-  // you may also experiment with AD_SINE or AD_TRIANGLE
-  ad9833_set_mode(AD_SQUARE);
+  //set gen to SINE
+  // you may also experiment with AD_SQUARE or AD_TRIANGLE
+  ad9833_set_mode(AD_SINE);
   // set some center frequency for the start
   ad9833_set_frequency(0, 26000);
 
