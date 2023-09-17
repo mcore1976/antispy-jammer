@@ -7,7 +7,7 @@ and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.p
 
 There are two versions of the jammer :
 - version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people
-- version B with ATTINY85/Digispark + AD9833 Signal Generator + audio amplifier TPA3116D2 + 20 transducers . This version is barely audible and has outstanding jamming capability for newest mobile phones. 
+- version B with ATTINY85/Digispark + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 )  + 20 transducers . This version is barely audible and has outstanding jamming capability for newest mobile phones. 
 Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly.
 
 
@@ -42,12 +42,12 @@ IF YOU WANT TO INCREASE JAMMING CAPABILITY USE BETTER AUDIO AMPLIFIER LIKE TPA31
 
 Component list :
 
-- 1 x Microcontroller ATTINY13 / ATTINY13A - or ATTINY 85, DIGISPARK board or any other Arduino may be used instead of microcontroller
+- 1 x Microcontroller ATTINY13 / ATTINY13A (not recommended) or ATTINY 85/45/25 (best), DIGISPARK board or any other Arduino may be used instead of microcontroller
 - 1 x 47 microfarad electrolytic capacitor ( it can be 1 - 470uF - for blocking distortions on power lines)
 - 1 x 100 nanofarad capacitor (it can be 47nf - 680nF - for blocking distortions on power lines)
 - set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent
 - some power source 3 - 5,5 Volt (it may be LiPol battery or set of 3xAA batteries) or 12-24Volts depending on audio amplifier board selected
-- Audio amplifier : 1 x PAM4803 : 2 x 3Watt Amplifier module ( instead of 2 bipolar transistors), but I recommend to use TPA3116D2 mono module for 100Watt audio power. ATTENTION ! For some reason TPA3110 and TPA3118 modules do not work properly with transducers. Only TPA3116D2 is good
+- Audio amplifier : 1 x PAM4803 : 2 x 3Watt Amplifier module ( instead of 2 bipolar transistors), but I recommend to use TPA3116D2 mono module  ( XH-M542 ) for 100Watt audio power. ATTENTION ! For some reason TPA3110 and TPA3118 modules do not work properly with transducers. Only TPA3116D2 is good
 - 1 x 10K Ohm potentiometer ( or resistor divider ) may be put between ATTINY85/ARDUINO/AD9833 audio output pins and audio amplifier board input pins (please notice that some audio amplifier board already have potentiometer therefore it may not be needed)
 - AD9833 signal generator board for version B of the jammer
 
