@@ -36,6 +36,8 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 24.08.2023 - The code for Digispark/ATTINY85 + AD9833 + TPA3116/PAM8403 was changed to use pseudo-number generator ( rand() function ) for infrasound 7Hz-15Hz and AD_SINE option on AD9833. The audio signal is now barely hearable but the device keeps good jamming efficiency.
 
+17.09.2023 - The code for Digispark/ATTINY85 + AD9833 + TPA3116/PAM8403 was changed to use pseudo-number generator ( rand() function ) for both frequency swing 24000-26000 Hz and infrasound 5Hz-25Hz and AD_SINE option on AD9833. This code combines both types of jamming infrasound + white noise
+
 IF YOU WANT TO INCREASE JAMMING CAPABILITY USE BETTER AUDIO AMPLIFIER LIKE TPA3116D2 WHICH GIVES 50WATT OF AUDIO POWER AND MORE TRANSDUCERS LIKE 50 PER AUDIO CHANNEL ! 
 
 -------------------------------------------------------------------------------------
