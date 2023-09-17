@@ -318,26 +318,28 @@ void setup()
 
 void loop() {
 
- 
-  uint16_t i; 
-    
-           // generating RANDOM 5-25Hz INFRASOUND over 40kHZ ULTRASOUND CARRIER 
-           // starting frequency for swinging
-           i = random(39000,41000);  
-           // going down with frequency to 39000 Hz, randomized infrasound 5Hz-25Hz
-           while (i >= 39000)
-           { 
-            i = i - random(5, 25);
-            ad9833_set_frequency(0, (double)i );
-           };
+ uint16_t i,j;
 
-           // going up with frequency to 41000 Hz again, randomized infrasound 5Hz-25Hz
-           // starting frequency for swinging
-           i = random(39000,41000);  
-           while (i <= 41000)
-           { 
-            i = i + random(5, 25);
-            ad9833_set_frequency(0, (double)i );
-           };
+          // generating RANDOM  INFRASOUND over 40kHZ ULTRASOUND CARRIER
+           j = random (40,60);
+          // starting frequency for swinging
+          i = random(39000,41000);
+          // going down with frequency to 39000
+          while (i >= 39000)
+          {
+           i = i - j;
+           ad9833_set_frequency(0, (double)i );
+          };
+
+          // going up with frequency to 41000 again
+          // starting frequency for swinging
+          i = random(39000,41000);
+          // generating RANDOM INFRASOUND over 40kHZ ULTRASOUND CARRIER
+	  j = random (40,60);
+          while (i <= 41000)
+          {
+           i = i + j;
+           ad9833_set_frequency(0, (double)i );
+          };
 
 }
