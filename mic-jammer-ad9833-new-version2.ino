@@ -305,7 +305,7 @@ void setup()
 
   //set gen to SINE
   // you may also experiment with AD_SQUARE or AD_TRIANGLE
-  ad9833_set_mode(AD_SINE);
+  ad9833_set_mode(AD_SQUARE);
   // set some center frequency for the start
   ad9833_set_frequency(0, 26000);
 
@@ -334,7 +334,7 @@ void loop() {
 
           // going up with frequency to 26000 again
           // starting frequency for swinging
-          i = random(24000,26000);
+          // i = random(24000,26000);
           // generating INFRASOUND FM modulation over 25kHZ ULTRASOUND CARRIER
           // for android best is random infrasound
           // j = random (5,25);
