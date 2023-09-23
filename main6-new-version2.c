@@ -419,8 +419,8 @@ void main()
 
 
   //set gen to SQUARE initially
-  // ad9833_set_mode(AD_SQUARE);
-  ad9833_set_mode(AD_SINE);
+  // ad9833_set_mode(AD_SINE);
+  ad9833_set_mode(AD_SQUARE);
 
   ad9833_set_frequency(0, 26000);
 
@@ -435,24 +435,26 @@ void main()
     
            // starting frequency for swinging
            i = 26000 - rand()%2000;
-           
+           j = (rand()%16) + 28;
            // generating RANDOM  INFRASOUND over 25kHZ ULTRASOUND CARRIER 
   
            // going down with frequency to 24000, randomized infrasound jumps 5Hz-25Hz
            while (i >= 24000)
            { 
-            i = i - ( (rand()%20) + 5 );
+            // i = i - ( (rand()%20) + 5 );
+            i = i - j;
             ad9833_set_frequency(0, (double)i );           
            };
 
            // starting frequency for swinging
-           i = 24000 + rand()%2000;
+           // i = 24000 + rand()%2000;
 
 
            // going up with frequency to 26000 again, randomized infrasound 5Hz-25Hz
            while (i <= 26000)
            { 
-            i = i +  ( (rand()%20) + 5 );
+            // i = i +  ( (rand()%20) + 5 );
+            i = i + j;
             ad9833_set_frequency(0, (double)i );
            };
    };    // end of while loop        
