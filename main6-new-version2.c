@@ -1,6 +1,7 @@
 /*
     wearable microphone jammer 
     - ATTINY85 chip & AVR-GCC compiler version
+    - 25kHz transducer version, for others change values in random function and borders in while loop
     
     CONNECTION
     --------
