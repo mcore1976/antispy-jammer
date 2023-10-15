@@ -1,5 +1,5 @@
 # antispy-jammer
-Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.
+Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers. It prevents from unauthorized human speech recording by hidden microphones and voice assistants. 
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
 here https://github.com/y-x-c/wearable-microphone-jamming  
@@ -10,6 +10,7 @@ There are two versions of the jammer :
 - version B with ATTINY85/Digispark + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 )  + 20 transducers . This version is barely audible and has outstanding jamming capability for newest mobile phones. 
 Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly.
 
+You can use 21kHz ultrasonic transducers (hard to get but the most effective for jamming), 25kHz transducers (default model), 40 kHz (smallest effectivenes in jamming).
 
 History of Version A of the jammer :
 
