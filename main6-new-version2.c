@@ -434,8 +434,8 @@ void main()
   while (1) 
    {
     
-           // starting frequency for swinging
-           i = 26000 - rand()%2000;
+           // starting frequency for swinging near higher border
+           i = 26000 - rand()%500;
            // generating RANDOM  INFRASOUND over 25kHZ ULTRASOUND CARRIER        
            j = (rand()%16) + 28;
   
@@ -447,8 +447,8 @@ void main()
             ad9833_set_frequency(0, (double)i );           
            };
 
-           // starting frequency for swinging
-           i = 24000 + rand()%2000;
+           // starting frequency for swinging near lower border
+           i = 24000 + rand()%500;
            // generating RANDOM  INFRASOUND over 25kHZ ULTRASOUND CARRIER 
            j = (rand()%16) + 28;
 
