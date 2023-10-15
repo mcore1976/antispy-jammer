@@ -320,13 +320,13 @@ void loop() {
 
  uint16_t i,j;
 
-          // generating INFRASOUND FM modulation over 25kHZ ULTRASOUND CARRIER
+          // generating INFRASOUND FM modulation over 40kHZ ULTRASOUND CARRIER
           // for android best is random infrasound
           j = random (28,44);
           // for iPhone best is fixed 45Hz value
           // j = 45;
-          // starting frequency for swinging
-          i = random(39000,41000);
+          // starting frequency for swinging near higher border
+          i = random(40500,41000);
           // going down with frequency to 39000
           while (i >= 39000)
           {
@@ -335,9 +335,9 @@ void loop() {
           };
 
           // going up with frequency to 41000 again
-          // starting frequency for swinging
-          i = random(39000,41000);
-          // generating INFRASOUND FM modulation over 25kHZ ULTRASOUND CARRIER
+          // starting frequency for swinging near lower border
+          i = random(39000,39500);
+          // generating INFRASOUND FM modulation over 40kHZ ULTRASOUND CARRIER
           // for android best is random infrasound
           j = random (28,44);
           // for iPhone best is fixed 45Hz value
