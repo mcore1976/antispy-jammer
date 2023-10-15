@@ -323,8 +323,8 @@ void loop() {
           j = random (28,44);
           // for iPhone best is fixed 45Hz value
           // j = 45;
-          // starting frequency for swinging
-          i = random(24000,26000);
+          // starting frequency for swinging near higher frequency
+          i = random(25500,26000);
           // going down with frequency to 24000
           while (i >= 24000)
           {
@@ -333,8 +333,8 @@ void loop() {
           };
 
           // going up with frequency to 26000 again
-          // starting frequency for swinging
-          i = random(24000,26000);
+          // starting frequency for swinging near lower frequency
+          i = random(24000,24500);
           // generating INFRASOUND FM modulation over 25kHZ ULTRASOUND CARRIER
           // for android best is random infrasound
           j = random (28,44);
