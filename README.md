@@ -10,7 +10,7 @@ There are two versions of the jammer :
 - version B with ATTINY85/Digispark + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 )  + 20 transducers . This version is barely audible and has outstanding jamming capability for newest mobile phones. 
 Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly.
 
-You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but the most effective for jamming), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming).
+You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but the most effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming).
 
 History of Version A of the jammer :
 
