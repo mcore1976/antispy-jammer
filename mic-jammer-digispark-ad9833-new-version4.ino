@@ -393,7 +393,8 @@ void loop() {
 
      // i = current frequency for the generator
      // j = calculated gap for next frequency
-     // x = cut off value - cap value for gap calculation	 
+     // x = cut off value - cap value for gap calculation	
+	
      uint16_t i,j, x;
 
           // generating INFRASOUND FM modulation over 25kHZ ULTRASOUND CARRIER
@@ -403,10 +404,10 @@ void loop() {
 		  
           // starting frequency for swinging near high border 
           i = random(25500,26000);
-		  // choosing random cut off for gap - you may play with this range
-		  x = random(25,100);
+	  // choosing random cut off for gap - you may play with this range
+	  x = random(25,100);
           // resetting j value 
-		  j = 1;
+	  j = 1;
 		  
           // going down with frequency to 24000
           while (i >= 24000)
@@ -414,8 +415,8 @@ void loop() {
            i = i - j;
            ad9833_set_frequency(0, (double)i );
            // INCREASING FREQUENCY GAP IN INTERVALS - you may play with this range
-           // j = j + random(1,5);          
-		   // increasing gap j up to x then from the beginning
+           // j = j + random(1,5);
+           // increasing gap j up to x then from the beginning
            j = (j + 1) % x;          
 		   
           };
@@ -423,10 +424,10 @@ void loop() {
           // going up with frequency to 26000 again
           // starting frequency for swinging near low border
           i = random(24000,24500);
-		  // choosing random cut off for gap - you may play with this range
-		  x = random(25,100);
+	  // choosing random cut off for gap - you may play with this range
+	  x = random(25,100);
           // resetting j value 
-		  j = 1;
+	  j = 1;
 		  
           // generating INFRASOUND FM modulation over 25kHZ ULTRASOUND CARRIER
           while (i <= 26000)
@@ -435,7 +436,7 @@ void loop() {
            ad9833_set_frequency(0, (double)i );
            // INCREASING FREQUENCY GAP IN INTERVALS - you may play with this range
            // j = j + random(1,5);          
-		   // increasing gap j up to x then from the beginning
+           // increasing gap j up to x then from the beginning
            j = (j + 1) % x;          
 		   
           };
