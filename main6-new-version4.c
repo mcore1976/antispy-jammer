@@ -434,13 +434,13 @@ void main()
    {
     
            // starting frequency for swinging NEAR HIGH BORDER
-           // i = 26000 - rand()%500;
-           i = 26000;
+           i = 26000 - rand()%500;
+           // i = 26000;
            // generating RANDOM  INFRASOUND over 25kHZ ULTRASOUND CARRIER 
            j = 1;
            // setting up deviation factor
            // x = (rand()%125) + 25;
-           x = (rand()%75) + 25;
+           x = (rand()%30) + 20;
 
            // going down with frequency to 24000, randomized infrasound jumps 5Hz-25Hz
            while (i >= 24000)
@@ -454,14 +454,14 @@ void main()
            };
 
            // starting frequency for swinging NEAR LOW BORDER
-           //i = 24000 + rand()%500;
-           i = 24000;
+           i = 24000 + rand()%500;
+           // i = 24000;
            // generating RANDOM  INFRASOUND over 25kHZ ULTRASOUND CARRIER 
            // going up with frequency to 26000 again, randomized infrasound 5Hz-25Hz
            j = 1; 
            // setting up deviation factor
            // x = (rand()%125) + 25;
-           x = (rand()%75) + 25;
+           x = (rand()%30) + 20;
            while (i <= 26000)
            { 
             i = i + j;
