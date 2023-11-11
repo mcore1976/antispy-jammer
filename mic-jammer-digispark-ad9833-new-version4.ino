@@ -405,7 +405,7 @@ void loop() {
           // starting frequency for swinging near high border 
           i = random(25500,26000);
 	  // choosing random cut off for gap - you may play with this range
-	  x = random(25,100);
+	  x = random(20,50);
           // resetting j value 
 	  j = 1;
 		  
@@ -425,7 +425,7 @@ void loop() {
           // starting frequency for swinging near low border
           i = random(24000,24500);
 	  // choosing random cut off for gap - you may play with this range
-	  x = random(25,100);
+	  x = random(20,50);
           // resetting j value 
 	  j = 1;
 		  
