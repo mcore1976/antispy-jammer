@@ -1,17 +1,24 @@
 # antispy-jammer
-Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers. It prevents from unauthorized human speech recording by hidden microphones and voice assistants. 
+Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers and AD9833 programmable signal generator. It prevents from unauthorized human speech recording by hidden microphones and voice assistants. 
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
 here https://github.com/y-x-c/wearable-microphone-jamming  
 and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.pdf , however my design evolved and using AD9833 and 25kHZ transducers is the only similarity with the original project.  
 
 There are two versions of the jammer :
+
 - version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people
-- version B with ATTINY85/Digispark + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 )  + 20 transducers . This version is barely audible and has outstanding jamming capability for newest mobile phones. 
-Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly.
+  
+- version B with ATTINY85/Digispark + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 )  + 20 transducers + additional components like Coils and Mosfet . This version is barely audible and has outstanding jamming capability for newest mobile phones like iPhone. 
+
+Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly. ANyway I do recommend to use only TPA3116D2 due to its audio power.
+
 Instead of TPA3116 module an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used. This set can increase the voltage on transducers by 5-10 times and give better jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
 
+If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup. 
+
 You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but the most effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming).
+
 
 History of Version A of the jammer :
 
@@ -21,8 +28,9 @@ However after testing first prototype  it turned out that the jamming power is t
 
 Files "main4.c"/"main5.c"  are using Digital to Analog Converter for FM 25kHz signal modulation only , while files "main7.c"/"main8.c" are using random PWM and amplitude modulation to generate the noise (in test main7.c/main8.c work better than main4.c/main5.c files). 
 If using files with AM modulation please tune signal gain using potentiometer not to get it distorted.
-
 The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock while ATTINY85 has fuses set to operate on 16MHz clock as in the Digispark module. 
+
+File "main6.c" and its variants are more like version B of the jammer however they require to use AVRGCC environment + USBASP programmer for ATTINY chip. The ATTINY85 chip is connected to AD9833 signal generator and furter to TPA 3116 audio amplifier and set of transducers and coils. The ATTINY85 and AD9833 are powered from 5V through LM7805 while TPA3116 is powered directly from 12V or higher.  I do recommend this option since it has an outstanding performance on jamming iPhones. 
 
 
 History of version B of the jammer :
@@ -40,7 +48,9 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 17.09.2023 - The code for Digispark/ATTINY85 + AD9833 + TPA3116/PAM8403 was changed to use pseudo-number generator ( rand() function ) for both frequency swing 24000-26000 Hz and infrasound 5Hz-25Hz and AD_SINE option on AD9833. This code combines both types of jamming infrasound + white noise. However please find that random infrasound is good only for Android based phones, for iPhones the best is to use static 45-50Hz FM modulation of ultrasound (found empirically).
 
-IF YOU WANT TO INCREASE JAMMING CAPABILITY USE BETTER AUDIO AMPLIFIER LIKE TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER AND MORE TRANSDUCERS LIKE 50 PER AUDIO CHANNEL ! 
+05.2024 - The code for ATTINY85 + AD9833 us using FM type modulation and swinging between 24-26 kHz. The frequency increases with SAW like steps with random CAP between 20-50Hz.  Additionaly there ahre hardware differences - using COILS and MOSFET IRF4115 for separating coils. 
+
+IF YOU WANT TO INCREASE JAMMING CAPABILITY USE BETTER AUDIO AMPLIFIER LIKE TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
 
 -------------------------------------------------------------------------------------
 
@@ -54,6 +64,9 @@ Component list :
 - Audio amplifier : 1 x PAM4803 : 2 x 3Watt Amplifier module ( instead of 2 bipolar transistors), but I recommend to use TPA3116D2 mono module  ( XH-M542 ) for 100Watt audio power. ATTENTION ! For some reason TPA3110 and TPA3118 modules do not work properly with transducers. Only TPA3116D2 is good
 - 1 x 10K Ohm potentiometer ( or resistor divider ) may be put between ATTINY85/ARDUINO/AD9833 audio output pins and audio amplifier board input pins (please notice that some audio amplifier board already have potentiometer therefore it may not be needed)
 - AD9833 signal generator board for version B of the jammer
+- MOSFET IRF 4115
+- 2 x 10K resistors 0.25Watt
+- High Current coils ( depending on availability : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers )
 
 -------------------------------------------------------------------------------------
 
@@ -83,7 +96,7 @@ Version A :  ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" ver
 Version B:  
 - Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png"  or "mic-jammer-AD9833-TPA3116D2.png"  and INO  script "mic-jammer-ad9833-digispark.ino". 
 - For different board than Digispark like Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino". 
-Remember to use TPA3116D2 instead PAM8403 for better jamming capability.
+Remember to use TPA3116D2 instead PAM8403 for better jamming capability and to use COILS and IRF 4115 MOSFET transistor.
 
 -------------------------------------------------------------------------------------
 
@@ -125,6 +138,8 @@ See the video showing how this device works :
 - New version for Arduino (and main4.c / main5.c for ATTINY) : https://youtu.be/JFtU2hQQ2vQ
 - Re-created original version for Digispark : https://youtu.be/PcTkMWJb_Gs
 - The newest version microphone jamming beast with TPA3116D2 audio amplifier board - jamms even iPhones : https://youtu.be/8RgoYlrgW4s
+- The final version with outstanding performance for jamming iPhones is available here : https://youtu.be/nIupojN8bRk?si=n5qydTXHUljC6Rzw
 
+  
 
 
