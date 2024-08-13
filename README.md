@@ -11,26 +11,26 @@ There are two versions of the jammer :
   
 - version B with ATTINY85/Digispark + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 )  + 20 transducers + additional components like Coils and Mosfet . This version is barely audible and has outstanding jamming capability for newest mobile phones like iPhone. 
 
-Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly. ANyway I do recommend to use only TPA3116D2 due to its audio power.
+Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly. Anyway I finally recommend to use only TPA3116D2 due to its audio power.
 
-Instead of TPA3116 module an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used. This set can increase the voltage on transducers by 5-10 times and give better jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
+Instead of PAM8403 module an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used. This set can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
 
 If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup. 
 
-You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but the most effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming).
+You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but the most effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working for all types of microphones/devices.
 
 
 History of Version A of the jammer :
 
-At the beginning of this project ("main.c" and "main2.c" source files)  there was a set of resistors used to build 5-bit Digital to Analogue converter ( R-2R resistor ladder DAC : check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html ) to create sinusoidal audio wave and audio amplification stage with 2 bipolar transistors (NPN+PNP bridge - class B amplifier) for driving piezzoelectric ultrasonic transducers : https://www.electronics-tutorials.ws/amplifier/amp_6.html (they introduce cross-over distortion  and have very small power). The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.The C code was utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave or pulse wave depending on source code version.  I have uploaded this code here only for reference, maybe someone would like to play with it.
+At the beginning of this project ("main.c" and "main2.c" source files)  there was a set of resistors used to build 5-bit Digital to Analogue converter ( R-2R resistor ladder DAC : check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html ) to create sinusoidal audio wave and audio amplification stage with 2 bipolar transistors (NPN+PNP bridge - class B amplifier) for driving piezzoelectric ultrasonic transducers : https://www.electronics-tutorials.ws/amplifier/amp_6.html (they introduce cross-over distortion  and have very small power). The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.The C code was utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave or pulse wave depending on source code version.  I have uploaded this code here only for reference, maybe someone would like to play with it for different purposes than audio jamming.
 
-However after testing first prototype  it turned out that the jamming power is too low because center frequency 25kHz has to be FM modulated in random manner. Finally I had to use PAM8403 amplifier module ( see diagram with "enhanced" version) for 6 Watt output power and modify lookup table and code to construct square audio wave with pseudo white-noise bias that modulates center frequency of ultrasonic transducers. In this version the 25kHz frequency is randomly shifted in 0,4 kHz offsets within 23-27 kHz range and that gives awesome results in jamming (up to 4-5 meters of jamming).  Please notice that even 6 Watt of audio power is too low to sucesfully jamm from greater distance so I ended up with using TPA3116D2 module - 100Watt audio power.
+However after testing first prototype  it turned out that the jamming power is too low because center frequency 25kHz has to be FM modulated in some manner. Finally I had to use PAM8403 amplifier module ( see diagram with "enhanced" version) for 6 Watt output power and modify lookup table and code to construct square audio wave with pseudo white-noise bias that modulates center frequency of ultrasonic transducers. In this version the 25kHz frequency is randomly shifted in 0,4 kHz offsets within 23-27 kHz range and that gives awesome results in jamming (up to 4-5 meters of jamming).  Please notice that even 6 Watt of audio power is too low to sucesfully jamm from greater distance so I ended up with using TPA3116D2 module - 100Watt audio power amplifier which seems to work the best with piezzo transducers after all.
 
 Files "main4.c"/"main5.c"  are using Digital to Analog Converter for FM 25kHz signal modulation only , while files "main7.c"/"main8.c" are using random PWM and amplitude modulation to generate the noise (in test main7.c/main8.c work better than main4.c/main5.c files). 
 If using files with AM modulation please tune signal gain using potentiometer not to get it distorted.
 The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock while ATTINY85 has fuses set to operate on 16MHz clock as in the Digispark module. 
 
-File "main6.c" and its variants are more like version B of the jammer however they require to use AVRGCC environment + USBASP programmer for ATTINY chip. The ATTINY85 chip is connected to AD9833 signal generator and furter to TPA 3116 audio amplifier and set of transducers and coils. The ATTINY85 and AD9833 are powered from 5V through LM7805 while TPA3116 is powered directly from 12V or higher.  I do recommend this option since it has an outstanding performance on jamming iPhones. 
+File "main6.c" and its variants are more like version B of the jammer (used to miniaturize the jammer) however they require to use AVRGCC environment + USBASP programmer for ATTINY chip. The ATTINY85 chip is connected to AD9833 signal generator and furter to TPA 3116 audio amplifier and set of transducers and coils. The ATTINY85 and AD9833 are powered from 5V through LM7805 while TPA3116 is powered directly from 12V or higher.  I do recommend this option since it has an outstanding performance on jamming iPhones. 
 
 
 History of version B of the jammer :
@@ -65,8 +65,9 @@ Component list :
 - 1 x 10K Ohm potentiometer ( or resistor divider ) may be put between ATTINY85/ARDUINO/AD9833 audio output pins and audio amplifier board input pins (please notice that some audio amplifier board already have potentiometer therefore it may not be needed)
 - AD9833 signal generator board for version B of the jammer
 - MOSFET IRF 4115
+- Diodes for 2AMP or more ( 1N4XXX series) 
 - 2 x 10K resistors 0.25Watt
-- High Current coils ( depending on availability : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers )
+- High Current coils ( depending on availability : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers ) - current best setup is single 15MILIHENR coil per each 2 transducers
 
 -------------------------------------------------------------------------------------
 
