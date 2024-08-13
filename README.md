@@ -90,6 +90,8 @@ Version B : This version uses AD9833 signal generator and ATTINY85 (ATTINY13 is 
 
 ARDUINO VERSIONS :
 
+Please configure first your Arduino IDE for the DIGISPARK board as described here : https://gist.github.com/Ircama/22707e938e9c8f169d9fe187797a2a2c
+
 Version A :  ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.  
 - for DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png"  or "mic-jammer-TPA3116D2.png"  and Arduino script "mic-jammer.ino".
 - In ARDUINO IDE go to File/Preferences/Additional board manager URL and put this URL : https://raw.githubusercontent.com/ArminJo/DigistumpArduino/master/package_digistump_index.json , then go to Menu Tools/Board and select Digistump AVR Boards / Digispark default 16.5 MHZ
