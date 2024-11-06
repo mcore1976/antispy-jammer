@@ -1,4 +1,4 @@
-# antispy-jammer
+# antispy-jammer-protección-anti espias jammer#-proteccion-de >>política-y-privacidad-jammer-y- defender-privacidad-con-magneto+replica-power-y-magneto-+multiple+golpe-de-magneto-10000-por-segundo#
 Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers and AD9833 programmable signal generator. It prevents from unauthorized human speech recording by hidden microphones and voice assistants. 
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
