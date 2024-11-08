@@ -2,7 +2,122 @@
 Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers and AD9833 programmable signal generator. It prevents from unauthorized human speech recording by hidden microphones and voice assistants. 
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
-here https://github.com/y-x-c/wearable-microphone-jamming  
+here
+Portales
+- Webinar -
+Empleo
+Robotica
+Mantenimiento
+Industria 4.0
+IIoT
+Ciberseguridad
+Cloud & Big Data
+Vision Artificial
+Controladores y Reguladores
+5G Industrial
+
+Menú
+Python en la Automatización Industrial
+27 Septiembre 2021
+Blog Automatas
+Leído
+ 23577 
+veces
+PLC PAC Controladores
+
+Cuando miramos las fortalezas del lenguaje de programación más popular del mundo, vemos algunas ventajas claras de Python para IIoT
+
+Python en la Automatización Industrial
+Cuando comenzamos la conversación sobre qué lenguajes de programación usar en aplicaciones de automatización industrial, generalmente comenzamos hablando de lenguajes IEC 61131-3 para PLC, como el clásico diagrama de contactos (LD) o el texto estructurado (ST). Para aplicaciones como la robótica, a menudo vemos lenguajes de programación compilados de bajo nivel como los que se encuentran en la familia C.
+
+Hasta hace muy poco, nadie hablaba de usar Python en la fábrica. ¿Qué ha cambiado para que un lenguaje interpretado de alto nivel se vuelva atractivo de repente? El código Python normalmente se ejecuta más lento que un lenguaje compilado que está más cerca del código de máquina, y ciertamente no está a la altura de la tarea del control en tiempo real, que es un gran obstáculo al desarrollar sistemas industriales.
+
+Sin embargo, ahora estamos viendo una confluencia de factores que están destacando a Python. Primero, la Industria 4.0 está cambiando el paradigma de cómo pensamos sobre la automatización industrial; a saber, su énfasis en la maquinaria “inteligente” con una autonomía mejorada, un rico panorama de big data y una integración completa con tecnologías de próxima generación como la fabricación aditiva y la computación en la nube.
+
+Otra implicación de la Industria 4.0 es la Internet industrial de las cosas (IIoT), que conecta la maquinaria industrial en una red local para la comunicación de máquina a máquina (M2M) en tiempo real y para proporcionar un flujo constante de datos de sensores para análisis. Como resultado, estamos siendo testigos de una convergencia de TI / OT, ​​una ruptura de los silos que durante mucho tiempo separaron a los profesionales de tecnología de la información de sus contrapartes de tecnología operativa. Después de todo, los dispositivos IIoT utilizan información para optimizar sus operaciones.
+
+Esto nos devuelve a Python. Cuando miramos las fortalezas del lenguaje de programación más popular del mundo, vemos algunas ventajas claras para IIoT. Ante todo, Python es conocido por su capacidad para manejar grandes conjuntos de datos. En segundo lugar, Guido Van Rossum, el inventor de Python, lo diseñó para una alta legibilidad, un rasgo clave cuando varios ingenieros trabajarán o mantendrán el mismo código y una característica que alimenta el fuego de la iteración innovadora. Y, finalmente, Python es de código abierto, tiene una comunidad increíble y es la opción preferida para muchas de las aplicaciones más atractivas de la actualidad.
+
+Machine Learning
+Sin lugar a dudas, el campo donde Python ejerce su mayor influencia es en el aprendizaje automático (Machine Learning ML), una rama de la inteligencia artificial (IA) donde los algoritmos aprenden de los datos sin que nadie codifique explícitamente ninguna regla. Las aplicaciones industriales comunes incluyen el mantenimiento predictivo y la robótica autónoma. La mayor parte del ML actual está escrito en Python. Los marcos como PyTorch y TensorFlow de código abierto de Google usan Python. AWS SageMaker, el servicio de inteligencia artificial en la nube de Amazon, viene con un kit de desarrollo de software (SDK) de Python integrado. En pocas palabras, Python es la mejor herramienta para el trabajo.
+
+Así es como se ve una configuración de ML industrial común. Los datos de las máquinas y los sensores se envían a la nube, donde tenemos fácil acceso a recursos de alto rendimiento que podemos usar para entrenar un modelo de aprendizaje automático. Una vez que tenemos un modelo entrenado, por ejemplo, uno que puede analizar datos para decir qué tan pronto es probable que una máquina se rompa, podemos enviar ese modelo de regreso a la planta.
+
+Al ejecutar la edge computing incorporando GPU en los propios dispositivos de producción o utilizando los recursos de una puerta de enlace IIoT local para fog computing, podemos usar nuestro modelo entrenado en el sitio. Si miramos a un robot autónomo, el código Python interpretará los objetivos de alto nivel, y esto, a su vez, es interpretado en movimientos por el código compilado de bajo nivel que interactúa directamente con el hardware.
+
+Una analogía fácil es mover el brazo: su cerebro establece la intención de alto nivel y el sistema nervioso de bajo nivel mueve sus músculos. A medida que avanzamos en la Industria 4.0 y los fabricantes encuentran usos más innovadores para la IA, esperamos que las habilidades de ingeniería de Python sean un activo cada vez más crucial.
+
+Visión por computadora
+Para que un brazo robótico levante algo, primero necesita saber qué está mirando. Ingrese a la visión por computadora (CV), un campo de inteligencia artificial que permite a las máquinas usar sus cámaras como ojos y, lo que es más importante, reconocer los objetos que ven. Simplemente considerando el papel descomunal de Python en ML, no es difícil ver cómo Python es útil para CV.
+
+Desarrollado originalmente por Intel a finales de los 90, OpenCV es ahora una de las mejores opciones para el desarrollo de CV de código abierto. Aunque la biblioteca todavía está escrita en C ++, la envoltura de Python, opencv-python, es ideal para aplicaciones de aprendizaje automático como el deep learning para CV porque conserva la velocidad del código C ++ original y, al mismo tiempo, desbloquea los beneficios de Python.
+
+Además, dado que opencv-python crea matrices NumPy como salida, podemos transferir inmediatamente nuestros datos a otras herramientas de Python como SciPy, Matplotlib o la plataforma ML que elijas. El resultado es una máquina que ve mucho más que píxeles, una que puede distinguir productos, realizar comprobaciones de control de calidad y manipular sus entornos con intrincados detalles.
+
+Creando un puente para un ecosistema conectado
+DSC2509 Cuando los fabricantes de máquinas envían dispositivos, no suelen priorizar la capacidad de comunicarse con otra cosa que no sea la interfaz hombre-máquina (HMI). Cuando agregamos el hecho de que muchas máquinas ejecutan código propietario o código G, que se ejecuta increíblemente cerca del hardware, el lado de TI de la convergencia de TI / OT se vuelve aún más difícil. ¿Cómo conseguimos que las máquinas se hablen entre sí si no son capaces de hablar el mismo idioma?
+
+Bueno, necesitamos un traductor, y Python está a la altura. Los programas como OpenMTC actúan como middleware, o "pegamento de software", para aplicaciones M2M e IoT. Por ejemplo, si colocamos este middleware en un dispositivo tan simple como una Raspberry Pi, el script de Python toma los datos de una fuente, los convierte y los envía a una máquina diferente en un formato que pueda leer.
+
+Un ejemplo simple es cualquier proceso de fabricación sensible a la temperatura. Si bien es posible que la maquinaria no pueda ajustar la temperatura por sí misma, su termómetro puede tomar lecturas y, si cruza un cierto umbral, hace ping al middleware, que puede decirle al calentador que baje el termostato.
+
+Podemos aplicar esta misma lógica a cualquier máquina que dependa de la salida de otra máquina. Además, no solo podemos utilizar este método para integrar maquinaria actual para impulsar el rendimiento, sino que también abre la puerta a un mundo de nuevas posibilidades. Uno de esos dominios del horizonte son los automóviles sin conductor; al comunicarse con otros vehículos en la carretera, optimizarán los patrones de tráfico, acortarán los desplazamientos y reducirán los accidentes. Si tuviéramos que apostar, diríamos que Python será un componente clave de este futuro interconectado.
+
+ Conclusión
+Si bien es posible que no terminemos usando Python para controlar el hardware robótico o interactuar directamente con la maquinaria de fabricación, eso no significa que este lenguaje de programación no tenga aplicaciones industriales. Cuando tomamos una visión general de la Industria 4.0, vemos que los datos son su característica definitoria. Estamos superponiendo directamente el mundo digital al mundo físico. Y es por eso que necesitamos Python: para cerrar la brecha entre ellos, para manejar los volúmenes de datos sin precedentes que estamos generando y para admitir el control macroscópico.
+
+Autor: Yuri Chamarelli Lead Product Marketing Specialist en Phoenix Contact
+
+Fuente: https://www.plcnext-community.net/
+
+
+
+
+
+
+
+Artículos relacionados
+
+TIA Portal V20 Rendimiento y eficiencia máxima para la Automatización
+
+TIA Portal V20: Ingeniería eficiente e integración con módulos MTP
+
+Impulso al open source industrial
+Descargas
+Pantallas HMI
+Vincular variables entre Vijeo Designer y SoMachine Basic
+Visión & Deteccion
+Presentacion Cámara inteligente Omron MicroHAWK F440-F (En)
+Motion Control y Servos
+Puesta en marcha de un variador de frecuencia para bombeo solar
+Kuka
+Gemelo VIrtual de Robot KUKA con Tecnomatix Process Simulate
+Motion Control
+Sinamics G120 Integración en TIA Portal
+
+ 
+
+
+ 
+
+Partners
+
+
+
+
+              
+Newsletter infoPLC
+Apúntate
+Contacto
+Sobre nosotros
+Publicidad / Advertise
+Empleo
+Política de privacidad
+ 
+ 
+ 
+©2024 infoPLC.net
+Automatizacion Industrial, Robótica e Industria 4.0 https://github.com/y-x-c/wearable-microphone-jamming  
 and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.pdf , however my design evolved and using AD9833 and 25kHZ transducers is the only similarity with the original project.  
 
 There are two versions of the jammer :
