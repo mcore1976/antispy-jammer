@@ -295,20 +295,33 @@ void setup()
   digitalWrite(FNC_PIN,HIGH);   
 
   SPI.begin();
-
+	  
    //We set the mode here, because other hardware may be doing SPI also
   SPI.setDataMode(SPI_MODE2);
-  
+
+  // letting watchdog to check
+  yield(); 		  
+	  
   delay(100);
+
+  // letting watchdog to check
+  yield(); 		  
+	  
   ad9833_init();
   delay(15);
 
+  // letting watchdog to check
+  yield(); 		  
+	  
   //set gen to SINE
   // you may also experiment with AD_SQUARE or AD_TRIANGLE
   ad9833_set_mode(AD_SQUARE);
   // set some center frequency for the start
   ad9833_set_frequency(0, 26000);
 
+  // letting watchdog to check
+  yield(); 		  
+	  
   // set random seed for pseudonumbers generation
   randomSeed(1234);
     
@@ -334,7 +347,10 @@ void loop() {
 	  x = random(20,50);
           // resetting j value 
 	  j = 1;
+	
+          // letting watchdog to check
           yield(); 		  
+	
           // going down with frequency to 24000
           while (i >= 24000)
           {
@@ -344,10 +360,14 @@ void loop() {
            // j = j + random(1,5);
            // increasing gap j up to x then from the beginning
            j = (j + 1) % x;          
-		   
+           // letting watchdog to check
+           yield(); 		  
           };
-          yield(); 
-          // going up with frequency to 26000 again
+
+	  // letting watchdog to check
+          yield(); 		  
+
+	  // going up with frequency to 26000 again
           // starting frequency for swinging near low border
           i = 24000;
 	  // choosing random cut off for gap - you may play with this range
@@ -364,7 +384,8 @@ void loop() {
            // j = j + random(1,5);          
            // increasing gap j up to x then from the beginning
            j = (j + 1) % x;          
-		   
+           // letting watchdog to check
+           yield(); 			   
           };
  
 }
