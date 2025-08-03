@@ -13,11 +13,11 @@ There are two versions of the jammer :
 
 Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly. Anyway I finally recommend to use only TPA3116D2 due to its audio power.
 
-Instead of PAM8403 module an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used. This set can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
+Instead of PAM8403 module I also used an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used. This set can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
 
 If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup. 
 
-You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but the most effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working for all types of microphones/devices.
+You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but sometimes more effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working for all types of microphones/devices.
 
 
 History of Version A of the jammer :
