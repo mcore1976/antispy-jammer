@@ -102,9 +102,9 @@ Version B:
 Remember to use TPA3116D2 instead PAM8403 for better jamming capability and to use COILS and IRF 4115 MOSFET transistor.
 
 If you want to use for example Raspberry Pi Pico RP2040 boards but you just need to change SPI communication pins : For RP2040-ZERO it will be :
-- SYNC/CS  pin 1,
-- SDATA/MOSI pin 3,
-- SCLK/CLK pin 2. Also
+- SSYNC/CS  pin 1 (GP1)
+- SDATA/MOSI pin 3 (GP3)
+- SCLK/CLK pin 2 (GP2)
 
  Also remember to change the pin definition here in the code : https://github.com/mcore1976/antispy-jammer/blob/main/mic-jammer-ad9833-new-version4.ino  :
 // Definition of FSYNC , CHIP SELECT pin in your Arduino board
