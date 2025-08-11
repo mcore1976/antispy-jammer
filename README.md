@@ -101,12 +101,11 @@ Version B:
 - For different board than Digispark like Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino". 
 Remember to use TPA3116D2 instead PAM8403 for better jamming capability and to use COILS and IRF 4115 MOSFET transistor.
 
-If you want to use for example Raspberry Pi Pico RP2040 boards but you just need to change SPI communication pins : For RP2040-ZERO it will be :
+If you want to use for example Raspberry Pi Pico RP2040 boards but you just need to change SPI communication pins , for example RP2040-ZERO it will be following setup :
 - SSYNC/CS  pin 1 (GP1)
 - SDATA/MOSI pin 3 (GP3)
 - SCLK/CLK pin 2 (GP2)
-
- Also remember to change the pin definition here in the code : https://github.com/mcore1976/antispy-jammer/blob/main/mic-jammer-ad9833-new-version4.ino  :
+And you have to use source code "mic-jammer-ad9833-new-version4.ino" in which you have to modify FSYNC pin assigned  :
 // Definition of FSYNC , CHIP SELECT pin in your Arduino board
 #define FNC_PIN 1
 
