@@ -105,7 +105,8 @@ If you want to use for example Raspberry Pi Pico RP2040 boards but you just need
 - SSYNC/CS  pin 1 (GP1)
 - SDATA/MOSI pin 3 (GP3)
 - SCLK/CLK pin 2 (GP2)
-And you have to use source code "mic-jammer-ad9833-new-version4.ino" in which you have to modify FSYNC pin assigned  :
+  
+For Different boards (than Digispark) you have to use source code "mic-jammer-ad9833-new-version4.ino" (whil relies on Arduino standard SPI library)  in which you need to modify FSYNC pin assigned  :
 // Definition of FSYNC , CHIP SELECT pin in your Arduino board
 #define FNC_PIN 1
 
