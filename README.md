@@ -1,5 +1,5 @@
 # antispy-jammer
-Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers and AD9833 programmable signal generator. It prevents from unauthorized human speech recording by hidden microphones and voice assistants. 
+Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers and AD9833 programmable signal generator. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.  You can also use different Arduino board like Raspberry Pi Pico RP2040-Zero but you will have to change pin numbers.
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
 here https://github.com/y-x-c/wearable-microphone-jamming  
@@ -100,6 +100,17 @@ Version B:
 - Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png"  or "mic-jammer-AD9833-TPA3116D2.png"  and INO  script "mic-jammer-ad9833-digispark.ino". 
 - For different board than Digispark like Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino". 
 Remember to use TPA3116D2 instead PAM8403 for better jamming capability and to use COILS and IRF 4115 MOSFET transistor.
+
+If you want to use for example Raspberry Pi Pico RP2040 boards but you just need to change SPI communication pins : For RP2040-ZERO it will be :
+- SYNC/CS  pin 1,
+- SDATA/MOSI pin 3,
+- SCLK/CLK pin 2. Also
+
+ Also remember to change the pin definition here in the code : https://github.com/mcore1976/antispy-jammer/blob/main/mic-jammer-ad9833-new-version4.ino  :
+// Definition of FSYNC , CHIP SELECT pin in your Arduino board
+#define FNC_PIN 1
+
+For Arduino boards that do not have 5V voltage stabilizer on-board, you would also have to use Voltage Regulator LM7805 to feed particular board (like RP2040-Zero board)  and AD9833 module. The TPA3116D2 board needs to be powered from higher voltage - 12V taken before LM7805 is connected.
 
 -------------------------------------------------------------------------------------
 
