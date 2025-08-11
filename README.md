@@ -1,5 +1,5 @@
 # antispy-jammer
-Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers and AD9833 programmable signal generator. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.  You can also use different Arduino board like Raspberry Pi Pico RP2040-Zero but you will have to change pin numbers.
+Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers and AD9833 programmable signal generator. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.  You can also use different Arduino board like Raspberry Pi Pico RP2040-Zero or ESP8266/ESP32 but you will have to change pin numbers for the SPI connectivity.
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
 here https://github.com/y-x-c/wearable-microphone-jamming  
@@ -50,13 +50,15 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 05.2024 - The code for ATTINY85 + AD9833 us using FM type modulation and swinging between 24-26 kHz. The frequency increases with SAW like steps with random CAP between 20-50Hz.  Additionaly there ahre hardware differences - using COILS and MOSFET IRF4115 for separating coils. 
 
+08.2025 - added Raspberry Pi Pico RP2040-ZERO and ESP8266 versions because of Digispark boards shortage on the market
+
 IF YOU WANT TO INCREASE JAMMING CAPABILITY USE BETTER AUDIO AMPLIFIER LIKE TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
 
 -------------------------------------------------------------------------------------
 
 Component list :
 
-- 1 x Microcontroller ATTINY13 / ATTINY13A (not recommended) or ATTINY 85/45/25 (best), DIGISPARK board or any other Arduino may be used instead of microcontroller
+- 1 x Microcontroller ATTINY13 / ATTINY13A (not recommended) or ATTINY 85/45/25 (best), DIGISPARK board or any other Arduino with SPI interface support may be used instead of microcontroller ( RP2040-ZERO or WEMOS 8266 D1 MINI boards)
 - 1 x 47 microfarad electrolytic capacitor ( it can be 1 - 470uF - for blocking distortions on power lines)
 - 1 x 100 nanofarad capacitor (it can be 47nf - 680nF - for blocking distortions on power lines)
 - set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent
