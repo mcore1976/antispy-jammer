@@ -68,9 +68,9 @@ Component list :
 - 1 x 10K Ohm potentiometer ( or resistor divider ) may be put between ATTINY85/ARDUINO/AD9833 audio output pins and audio amplifier board input pins (please notice that some audio amplifier board already have potentiometer therefore it may not be needed)
 - AD9833 signal generator board for version B of the jammer
 - MOSFET IRF 4115 < optional >
-- Diodes for 2AMP or more ( 1N4XXX series)  <optional>
-- 2 x 10K resistors 0.25Watt <optional>
-- High Current coils ( depending on availability : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers ) - current best setup is single 15MILIHENR coil per each 2 transducers <optional>
+- Diodes for 2AMP or more ( 1N400X series)  < optional >
+- 2 x 10K resistors 0.25Watt < optional >
+- High Current coils ( depending on availability : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers ) - current best setup is single 15MILIHENR coil per each 2 transducers < optional >
 
 The transducer set may be connected directly to the TPA3116D2 output or through the diode and IRF MOSFET. 
 
