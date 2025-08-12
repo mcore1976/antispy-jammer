@@ -50,7 +50,7 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 05.2024 - The code for ATTINY85 + AD9833 us using FM type modulation and swinging between 24-26 kHz. The frequency increases with SAW like steps with random CAP between 20-50Hz.  Additionaly there ahre hardware differences - using COILS and MOSFET IRF4115 for separating coils. 
 
-08.2025 - added Raspberry Pi Pico RP2040-ZERO and ESP8266 versions because of Digispark boards shortage on the market.
+08.2025 - added Raspberry Pi Pico RP2040-ZERO , ESP8266 WEMOS D1 MINI , ESP32C3 SUPER MINI + AD9833 module versions because of Digispark boards shortage on the market.
 
 IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
 
