@@ -35,7 +35,7 @@
 #include <SPI.h>
 
 
-// Definition of FSYNC , CHIP SELECT pin in your Arduino board  - CS pin on your ESP8266 board
+// Definition of FSYNC , CHIP SELECT pin in your Arduino board  - CS pin on your ESP32C3 board
 #define FNC_PIN 7
 
 /** \name AD9833 waveform output modes
