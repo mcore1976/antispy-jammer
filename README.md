@@ -49,9 +49,9 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 17.09.2023 - The code for Digispark/ATTINY85 + AD9833 + TPA3116/PAM8403 was changed to use pseudo-number generator ( rand() function ) for both frequency swing 24000-26000 Hz and infrasound 5Hz-25Hz and AD_SINE option on AD9833. This code combines both types of jamming infrasound + white noise. However please find that random infrasound is good only for Android based phones, for iPhones the best is to use static 45-50Hz FM modulation of ultrasound (found empirically).
 
-05.2024 - The code for ATTINY85 + AD9833 us using FM type modulation and swinging between 24-26 kHz. The frequency increases with SAW like steps with random CAP between 20-50Hz.  Additionaly there ahre hardware differences - using COILS and MOSFET IRF4115 for separating coils. 
+05.2024 - The code for ATTINY85 + AD9833 us using FM type modulation and swinging between 24-26 kHz. The frequency increases with SAW like steps with random CAP between 20-50Hz.  Additionaly there are hardware differences - using COILS and MOSFET IRF4115 for separating coils. Please notice that using coils, diode and MOSFET IRF is optional but may improve iPhone jamming capability.
 
-08.2025 - added Raspberry Pi Pico RP2040-ZERO , ESP8266 WEMOS D1 MINI , ESP32C3 SUPER MINI + AD9833 module versions because of Digispark boards shortage on the market.
+08.2025 - added Raspberry Pi Pico RP2040-ZERO , ESP8266 WEMOS D1 MINI , ESP32C3 SUPER MINI + AD9833 module versions because of Digispark boards shortage on the market. Added connection diagrams for these modules.
 
 IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
 
@@ -107,16 +107,9 @@ Version B:
 - For different board than Digispark like Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino". 
 Remember to use TPA3116D2 instead PAM8403 for better jamming capability and to use COILS and IRF 4115 MOSFET transistor.
 
-If you want to use for example Raspberry Pi Pico RP2040 boards but you just need to change SPI communication pins , for example RP2040-ZERO it will be following setup :
-- SSYNC/CS  pin 1 (GP1)
-- SDATA/MOSI pin 3 (GP3)
-- SCLK/CLK pin 2 (GP2)
-  
-For Different boards (than Digispark) you have to use source code "mic-jammer-ad9833-new-version4.ino" (whil relies on Arduino standard SPI library)  in which you need to modify FSYNC pin assigned  :
-// Definition of FSYNC , CHIP SELECT pin in your Arduino board
-#define FNC_PIN 1
+If you want to use differnt boards than Digispark like Raspberry Pi Pico RP2040 / ESP8266 /ESP32 boards - you need to change SPI communication pins, there are example source codes and diagrams attached.
 
-For Arduino boards that do not have 5V voltage stabilizer on-board, you would also have to use Voltage Regulator LM7805 to feed particular board (like RP2040-Zero board)  and AD9833 module. The TPA3116D2 board needs to be powered from higher voltage - 12V taken before LM7805 is connected.
+For Arduino boards that do not have 5V voltage stabilizer on-board, you would also have to use Voltage Regulator LM7805 to feed particular board (like RP2040-Zero board , ESP32, ESP8266 )  and AD9833 module. The TPA3116D2 board needs to be powered from higher voltage - 12V taken before LM7805 is connected.
 
 -------------------------------------------------------------------------------------
 
