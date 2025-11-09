@@ -8,7 +8,7 @@ and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.p
 
 There are two versions of the jammer :
 
-- version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people
+- version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people. Less audible version is with TC4420 ( mosfer driver chip ) + MOSFET IRF4115 + transducer + coils. 
   
 - version B with ATTINY85/Digispark (or RP2040/ESP8266/ESP32)  + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 )  + 20 transducers + additional components like Coils and Mosfet . This version is barely audible and has outstanding jamming capability for newest mobile phones like iPhone. 
 
@@ -16,7 +16,7 @@ Please notice that some audio amplifiers like TPA3110 do not work correctly with
 
 Instead of PAM8403 module I also used an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used. This set can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
 
-If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup. 
+If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup. Alternatively use TC4420 ( mosfer driver chip ) + MOSFET IRF4115 + transducer + coils
 
 You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but sometimes more effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working for all types of microphones/devices.
 
