@@ -8,17 +8,17 @@ and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.p
 
 There are two versions of the jammer :
 
-- version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people. Less audible version is with TC4420 ( mosfer driver chip ) + MOSFET IRF4115 + transducer + coils. 
+- version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people. Less audible version is with TC4420 / IXDI614PI  ( MOSFET driver chip ) + MOSFET IRFB4115 + transducer + coils. 
   
-- version B with ATTINY85/Digispark (or RP2040/ESP8266/ESP32)  + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 )  + 20 transducers + additional components like Coils and Mosfet . This version is barely audible and has outstanding jamming capability for newest mobile phones like iPhone. 
+- version B with ATTINY85/Digispark (or RP2040/ESP8266/ESP32)  + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 ) / or MOSFET driver chip + 20 transducers + additional components like Coils and Mosfet. This version is barely audible and has outstanding jamming capability for newest mobile phones like iPhone. 
 
 Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly. Anyway I finally recommend to use only ORIGINAL TPA3116D2 due to its audio power (watch out for fake XH-M542 boards!).
 
-Instead of PAM8403 module I also used an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used. This set can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
+Instead of PAM8403 module I also used an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used, but the effect will still be worse than using Audio Amplifier board TPA3116D2 or IRF4115+TC4420. However autotransformer can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
 
 If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup. Alternatively use TC4420 ( mosfer driver chip ) + MOSFET IRF4115 + transducer + coils
 
-You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but sometimes more effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working for all types of microphones/devices.
+You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but sometimes more effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working properly for all types of microphones/devices. The 40KHz have very limited jamming capability.
 
 
 History of Version A of the jammer :
@@ -53,7 +53,9 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 08.2025 - added Raspberry Pi Pico RP2040-ZERO , ESP8266 WEMOS D1 MINI , ESP32C3 SUPER MINI + AD9833 module versions because of Digispark boards shortage on the market. Added connection diagrams for these modules.
 
-IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
+11.2025 - added MOSFET DRIVER + MOSFET + COILS instead of using TPA3116D2 boards, added connection diagrams for this setup for newer boards ESP8266 WEMOS D1 MINI , ESP32C3 SUPER MINI , RP2040-ZERO  
+
+IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER OR USE MOSFET DRIVER TC4420/IXDI614PI + MOSFET IRFB4115 + COILS  AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
 
 -------------------------------------------------------------------------------------
 
@@ -68,10 +70,10 @@ Component list :
 - LM7805 - 5V voltage stabilizer when using boards : RP2040, ESP32, ESP8266 or discrete ATTINY85 chip
 - 1 x 10K Ohm potentiometer ( or resistor divider ) may be put between ATTINY85/ARDUINO/AD9833 audio output pins and audio amplifier board input pins (please notice that some audio amplifier board like XH-M542 already have potentiometer therefore it may not be needed) < optional >
 - AD9833 signal generator board for version B of the jammer
-- MOSFET IRF 4115 < optional >
+- MOSFET IRF 4115 < optional > + MOSFET DRIVER TC4420/IXDI614PI - if no Audio amplifier TPA3116D2/PAM4803 used 
 - Diodes for 2AMP or more ( 1N400X series)  < optional >
 - 2 x 10K resistors 0.25Watt < optional >
-- High Current coils ( depending on availability : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers ) - current best setup is single 15MILIHENR coil per each 2 transducers < optional >
+- When using MOSFET+DRIVER must additionally use High Current coils ( depending on availability : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers ) - current best setup is single 15MILIHENR coil per each 2 transducers < optional >
 
 The transducer set may be connected directly to the TPA3116D2 output or through the diode and IRF MOSFET. 
 
