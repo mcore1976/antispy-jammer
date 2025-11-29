@@ -16,7 +16,7 @@ Please notice that some audio amplifiers like TPA3110 do not work correctly with
 
 Instead of PAM8403 module I also used an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used, but the effect will still be worse than using Audio Amplifier board TPA3116D2 or IRF4115+TC4420. However autotransformer can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
 
-If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup. Alternatively use TC4420 ( mosfer driver chip ) + MOSFET IRF4115 + transducer + coils
+If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 3 transducers OR one  4.7 miliHenr coil per each 4 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup. Alternatively use TC4420 ( mosfer driver chip ) + MOSFET IRF4115 + transducer + coils
 
 You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but sometimes more effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working properly for all types of microphones/devices. The 40KHz have very limited jamming capability.
 
@@ -73,7 +73,7 @@ Component list :
 - MOSFET IRF 4115 < optional > + MOSFET DRIVER TC4420/IXDI614PI - if no Audio amplifier TPA3116D2/PAM4803 used 
 - Diodes for 2AMP or more ( 1N400X series)  < optional >
 - 2 x 10K resistors 0.25Watt < optional >
-- When using MOSFET+DRIVER must additionally use High Current coils ( depending on availability : one 3.3 miliHenr coil per each 6 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers ) - current best setup is single 15MILIHENR coil per each 2 transducers < optional >
+- When using MOSFET+DRIVER must additionally use High Current coils ( depending on availability : one 3.3 miliHenr coil per each 3 transducers OR one  4.7 miliHenr coil per each 4 transducers OR one  6.8 miliHenr coil per each 6 transducers ) -  < optional >
 
 The transducer set may be connected directly to the TPA3116D2 output or through the diode and IRF MOSFET. 
 
