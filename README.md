@@ -153,8 +153,8 @@ See the video showing how this device works :
 - New version for Arduino (and main4.c / main5.c for ATTINY) : https://youtu.be/JFtU2hQQ2vQ
 - Re-created original version for Digispark : https://youtu.be/PcTkMWJb_Gs
 - The newest version microphone jamming beast with TPA3116D2 audio amplifier board - jamms even iPhones : https://youtu.be/8RgoYlrgW4s
-- The final version with outstanding performance for jamming iPhones is available here : https://youtu.be/nIupojN8bRk?si=n5qydTXHUljC6Rzw
-
+- The  version that supports jamming iPhones is available here : https://youtu.be/nIupojN8bRk?si=n5qydTXHUljC6Rzw
+- The final version with MOSFET driver chip TC4420/IXDI614PI , MOSFET transistor IRF4115 and set of 4.7 MiliHenr coils : https://youtu.be/p5w_T1xVSF8
   
 
 
