@@ -1,6 +1,6 @@
 # antispy-jammer
 Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers and AD9833 programmable signal generator. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.  
-You can also use different Arduino board like Raspberry Pi Pico RP2040-Zero or ESP8266/ESP32 but you may need  to change pin numbers for the SPI connectivity depending on the boards you have.
+You can also use different Arduino board like Raspberry Pi Pico RP2040-Zero, ESP8266/ESP32, Arduino Mini/Nano but you may need  to change pin numbers for the SPI connectivity depending on the boards you have.
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
 here https://github.com/y-x-c/wearable-microphone-jamming  
@@ -8,17 +8,18 @@ and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.p
 
 There are two versions of the jammer :
 
-- version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people. Less audible version is with TC4420 / IXDI614PI  ( MOSFET driver chip ) + MOSFET IRFB4115 + transducer + coils. 
+- Obsolete : version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people. Less audible version is with TC4420 / IXDI614PI  ( MOSFET driver chip ) + MOSFET IRFB4115 + transducer + coils. 
   
 - version B with ATTINY85/Digispark (or RP2040/ESP8266/ESP32)  + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 ) / or MOSFET driver chip + 20 transducers + additional components like Coils and Mosfet. This version is barely audible and has outstanding jamming capability for newest mobile phones like iPhone. 
 
 Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly. Anyway I finally recommend to use only ORIGINAL TPA3116D2 due to its audio power (watch out for fake XH-M542 boards!).
 
-Instead of PAM8403 module I also used an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115 can be used, but the effect will still be worse than using Audio Amplifier board TPA3116D2 or IRF4115+TC4420. However autotransformer can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
+Instead of PAM8403 module I also try to use an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115, but the effect was still  worse than using Audio Amplifier board TPA3116D2 or setup with IRF4115+TC4420. However autotransformer can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
 
-If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 3 transducers OR one  4.7 miliHenr coil per each 4 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup. Alternatively use TC4420 ( mosfer driver chip ) + MOSFET IRF4115 + transducer + coils
+If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 4 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup.
+Due to many fake Audio amplifier boards XH-M542 I am using now only following setup :  TC4420 ( mosfer driver chip ) + MOSFET IRF4115 + transducer + coils
 
-You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but sometimes more effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working properly for all types of microphones/devices. The 40KHz have very limited jamming capability.
+You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but sometimes more effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working properly for all types of microphones/devices. The 40KHz have very limited jamming capability and should not be used, however the source code for this frequency is available in the repo. 
 
 
 History of Version A of the jammer :
@@ -31,7 +32,7 @@ Files "main4.c"/"main5.c"  are using Digital to Analog Converter for FM 25kHz si
 If using files with AM modulation please tune signal gain using potentiometer not to get it distorted.
 The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock while ATTINY85 has fuses set to operate on 16MHz clock as in the Digispark module. 
 
-File "main6.c" and its variants are more like version B of the jammer (used to miniaturize the jammer) however they require to use AVRGCC environment + USBASP programmer for ATTINY chip. The ATTINY85 chip is connected to AD9833 signal generator and furter to TPA 3116 audio amplifier and set of transducers and coils. The ATTINY85 and AD9833 are powered from 5V through LM7805 while TPA3116 is powered directly from 12V or higher.  I do recommend this option since it has an outstanding performance on jamming iPhones. 
+File "main6.c" and its variants are more like version B of the jammer (used to miniaturize the jammer) however they require to use AVRGCC environment + USBASP programmer for ATTINY chip. The ATTINY85 chip is connected to AD9833 signal generator and further to TPA 3116 audio amplifier and set of transducers and coils. The ATTINY85 and AD9833 are powered from 5V through LM7805 while TPA3116 is powered directly from 12V or higher.  I do recommend this option since it has a better performance on jamming iPhones. 
 
 
 History of version B of the jammer :
@@ -55,7 +56,9 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 11.2025 - added MOSFET DRIVER + MOSFET + COILS instead of using TPA3116D2 boards, added connection diagrams for this setup for newer boards ESP8266 WEMOS D1 MINI , ESP32C3 SUPER MINI , RP2040-ZERO  
 
-IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER OR USE MOSFET DRIVER TC4420/IXDI614PI + MOSFET IRFB4115 + COILS  AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
+03.2026 - added 18V Zener Diode 1N5355B between Gate/Source of the MOSFET IRFB4115. Mosfet IRFB4115 has only 20V of max allowed voltage Ugs. Now it should not break so fast. 
+
+IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER OR BETTER USE MOSFET DRIVER TC4420/IXDI614PI + MOSFET IRFB4115 + COILS  AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
 
 -------------------------------------------------------------------------------------
 
@@ -70,10 +73,11 @@ Component list :
 - LM7805 - 5V voltage stabilizer when using boards : RP2040, ESP32, ESP8266 or discrete ATTINY85 chip
 - 1 x 10K Ohm potentiometer ( or resistor divider ) may be put between ATTINY85/ARDUINO/AD9833 audio output pins and audio amplifier board input pins (please notice that some audio amplifier board like XH-M542 already have potentiometer therefore it may not be needed) < optional >
 - AD9833 signal generator board for version B of the jammer
-- MOSFET IRF 4115 < optional > + MOSFET DRIVER TC4420/IXDI614PI - if no Audio amplifier TPA3116D2/PAM4803 used 
+- MOSFET IRF 4115 < optional > + MOSFET DRIVER TC4420/IXDI614PI + ZENER DIODE 18V - if no Audio amplifier TPA3116D2/PAM4803 used 
 - Diodes for 2AMP or more ( 1N400X series)  < optional >
 - 2 x 10K resistors 0.25Watt < optional >
-- When using MOSFET+DRIVER must additionally use High Current coils ( depending on availability : one 3.3 miliHenr coil per each 3 transducers OR one  4.7 miliHenr coil per each 4 transducers OR one  6.8 miliHenr coil per each 6 transducers ) -  < optional >
+- When using MOSFET+DRIVER must additionally use High Current coils ( depending on availability : one 3.3 miliHenr coil per each 4 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers ) -  < optional >
+- Remember to use 18V ZENER DIODE to protect MOSFET IRF4115 from electrostatic discharge (ESD) and overvoltage on Gate pin. 
 
 The transducer set may be connected directly to the TPA3116D2 output or through the diode and IRF MOSFET. 
 
@@ -106,12 +110,14 @@ Version A :  ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" ver
  
 Version B:  
 - Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png"  or "mic-jammer-AD9833-TPA3116D2.png"  and INO  script "mic-jammer-ad9833-digispark.ino". 
-- For different board than Digispark like Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino". 
-Remember to use TPA3116D2 instead PAM8403 for better jamming capability and to use COILS and IRF 4115 MOSFET transistor.
+- For different board than Digispark like Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino".
+- For boards like RP2040/ESP32C3/ESP8266 use appropriate diagram and source code with the name of this board
+-  
+Remember to use TPA3116D2 instead PAM8403 for better jamming capability and to use COILS and IRF 4115 MOSFET transistor + MOSFET driver chip TC4420.
 
-If you want to use differnt boards than Digispark like Raspberry Pi Pico RP2040 / ESP8266 /ESP32 boards - you need to change SPI communication pins, there are example source codes and diagrams attached.
+If you want to use different boards than provided setup it is also possible as long as SPI library is available for your board , but you will need to change SPI communication pins to match your board.
 
-For Arduino boards that do not have 5V voltage stabilizer on-board, you would also have to use Voltage Regulator LM7805 to feed particular board (like RP2040-Zero board , ESP32, ESP8266 )  and AD9833 module. The TPA3116D2 board needs to be powered from higher voltage - 12V taken before LM7805 is connected.
+For Arduino boards that do not have 5V voltage stabilizer on-board, you would also have to use Voltage Regulator LM7805 to feed particular board (like RP2040-Zero board , ESP32, ESP8266 )  and AD9833 module. The TPA3116D2 board needs to be powered from higher voltage - 12V taken before LM7805 is connected. If using TC4420 MOSFET driver and MOSFET IRF 4115 they need to be powered from higher voltage as well ( 18V is the maximum !!!)
 
 -------------------------------------------------------------------------------------
 
