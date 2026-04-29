@@ -1,13 +1,14 @@
 /*
-    wearable microphone jammer
+  wearable microphone jammer
   
     Version based on original concept &  development :
     https://github.com/y-x-c/wearable-microphone-jamming
   
     Boards needed : 
     Arduino Raspberry Pi Pico 2040 - RP2040-ZERO or RP2040-ONE from Waveshare
-    TPA3116D2 board - audio amplifier module + potentiometer
-    OR TC4420 + MOSFET IRF4115
+    TC4420 MOSFET driver chip 
+    MOSFET IRF4115 
+    COILS 4.7 mlihenr per each 5 transducers for 25KHz
 
     Attention : Use Linux based PC and Arduino Pi Pico Earle Philhower Core for compilation
     Board Manager link for Arduino :
@@ -16,13 +17,14 @@
     CONNECTION EXAMPLE FOR ARDUINO RP2040-ZERO
     --------
     
-    GP1 PIN OF RP2040-ZERO  --> LEFT AUDIO IN + RIGHT AUDIO IN   / or INPUT PIN OF TC4420 MOSFET DRIVER
+    GP1 PIN OF RP2040-ZERO  -->  or INPUT PIN OF TC4420 MOSFET DRIVER
     GND  --> AUDIO GND
 
     ARDUINO HAS TO BE POWERED FROM 5V THROUGH LM7805 VOLTAGE STABILIZER OR BUCK-DOWN VOLTAGE CONVERTER
-    TPA3116 HAS TO BE CONNECTED TO 12V AND GND
+    TC4420 MOSFET DRIVER AND IRF4115 MOSFET HAVE TO BE CONNECTED TO MAX 18V 
+
+    THIS CODE USES FM MODULATION AND AM MODULATION ( RANDOM PWM DUTY ) FOR JAMMING  MICROPHONE
         
-    
 */
 
 
@@ -42,7 +44,7 @@ void update_pwm_advanced(uint32_t freq, uint8_t duty_percent) {
     uint32_t sys_clk = clock_get_hz(clk_sys);
     uint32_t wrap = (sys_clk / freq) - 1;
 
-    // Obliczamy poziom logiczny dla zadanego procentu wypełnienia
+    // Calculating correct wrap and duty for the signal no to get any glitches
     uint32_t level = (uint32_t)(((float)(wrap + 1) * duty_percent) / 100.0f);
 
     pwm_set_wrap(slice_num, wrap);
@@ -90,6 +92,7 @@ void loop() {
         // changing the PWM frequency 
         update_pwm_advanced(i, current_duty);
 
+        // you may randomize jumps for better jamming instead of j+1
         // y = random(1, 4);
         // j = (j + y) % x;
          j = (j + 1) % x;
@@ -115,7 +118,8 @@ void loop() {
 
         // changing the PWM frequency 
         update_pwm_advanced(i, current_duty);
-       
+
+        // you may randomize jumps for better jamming instead of j+1      
         // y = random(1, 4);
         // j = (j + y) % x;
          j = (j + 1) % x;
