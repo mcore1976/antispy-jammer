@@ -58,13 +58,15 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 03.2026 - added 18V Zener Diode 1N5355B between Gate/Source of the MOSFET IRFB4115. Mosfet IRFB4115 has only 20V of max allowed voltage Ugs. Now it should not break so fast. 
 
+04.2026 - added Raspberry RP2040 / RP2035 jammer version without AD9833 module. This boards uses perfect PWM that is built in within RP2040 chip to generate the same signal as AD9833 in previous versions. This reduces the cost and improves reliability of the device ( I found many chinese AD9833 modules poor quality ) 
+
 IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER OR BETTER USE MOSFET DRIVER TC4420/IXDI614PI + MOSFET IRFB4115 + COILS  AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
 
 -------------------------------------------------------------------------------------
 
 Component list :
 
-- 1 x Microcontroller ATTINY13 / ATTINY13A (not recommended) or ATTINY 85/45/25 (best), DIGISPARK board or any other Arduino with SPI interface support may be used instead of microcontroller ( RP2040-ZERO or WEMOS 8266 D1 MINI boards)
+- 1 x Microcontroller ATTINY13 / ATTINY13A (not recommended) or ATTINY 85/45/25 (best), DIGISPARK board or any other Arduino with SPI interface support may be used instead of microcontroller ( RP2040-ZERO or WEMOS 8266 D1 MINI boards). ATTENTION - if using RP2040 board and PWM option you do not need to bud AD9833
 - 1 x 47 microfarad electrolytic capacitor ( it can be 1 - 470uF - for blocking distortions on power lines)
 - 1 x 100 nanofarad capacitor (it can be 47nf - 680nF - for blocking distortions on power lines)
 - set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent
@@ -72,7 +74,7 @@ Component list :
 - Audio amplifier : 1 x PAM4803 : 2 x 3Watt Amplifier module ( instead of 2 bipolar transistors), but I recommend to use TPA3116D2 mono module  ( XH-M542 ) for 100Watt audio power. ATTENTION ! For some reason TPA3110 and TPA3118 modules do not work properly with transducers. Only TPA3116D2 is good
 - LM7805 - 5V voltage stabilizer when using boards : RP2040, ESP32, ESP8266 or discrete ATTINY85 chip
 - 1 x 10K Ohm potentiometer ( or resistor divider ) may be put between ATTINY85/ARDUINO/AD9833 audio output pins and audio amplifier board input pins (please notice that some audio amplifier board like XH-M542 already have potentiometer therefore it may not be needed) < optional >
-- AD9833 signal generator board for version B of the jammer
+- AD9833 signal generator board for version B of the jammer, ATTENTION ! there is NO AD9833 option but only for RP2040 board
 - MOSFET IRF 4115 < optional > + MOSFET DRIVER TC4420/IXDI614PI + ZENER DIODE 18V - if no Audio amplifier TPA3116D2/PAM4803 used 
 - Diodes for 2AMP or more ( 1N400X series)  < optional >
 - 2 x 10K resistors 0.25Watt < optional >
