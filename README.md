@@ -58,7 +58,7 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 03.2026 - added 18V Zener Diode 1N5355B between Gate/Source of the MOSFET IRFB4115. Mosfet IRFB4115 has only 20V of max allowed voltage Ugs. Now it should not break so fast. 
 
-04.2026 - added Raspberry RP2040 / RP2035 jammer version without AD9833 module. This boards uses perfect PWM that is built in within RP2040 chip to generate the same signal as AD9833 in previous versions. This reduces the cost and improves reliability of the device ( I found many chinese AD9833 modules poor quality ) 
+04.2026 - added Raspberry RP2040 / RP2035 jammer version without AD9833 module. This boards uses perfect PWM that is built in within RP2040 chip to generate the same signal as AD9833 in previous versions. This reduces the cost and improves reliability of the device ( I found many chinese AD9833 modules poor quality ). Added KICAD DESIGN files + GERBER files for the PCB (PCBWAY / JCLPCB ). 
 
 IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER OR BETTER USE MOSFET DRIVER TC4420/IXDI614PI + MOSFET IRFB4115 + COILS  AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
 
