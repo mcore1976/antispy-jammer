@@ -93,7 +93,7 @@ void loop() {
         if (j == 0) j = 1;  // safeguard
        
        // you may want to adjust these
-       delayMicroseconds(20);
+       delayMicroseconds(140);
     }
 
     // swiping up 24kHz -> 26kHz
@@ -112,6 +112,6 @@ void loop() {
         if (j == 0) j = 1; // safeguard
 
        // you may want to adjust these
-        delayMicroseconds(20);
+        delayMicroseconds(140);
     }
 }
