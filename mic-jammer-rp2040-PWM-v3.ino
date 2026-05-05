@@ -89,8 +89,8 @@ void loop() {
         // AM modulation - randomizing Duty of the PWM wave
         // attention it is best jamming when it is change linearly between 25-35 percent
         // current_duty = random(25, 35);
-        // below it will swipe duty between 50-65 it is tailored to TC4420 chip
-        current_duty = 50 + ((j * 15) / x);
+        // below it will swipe duty between 35-50 it is tailored to TC4420 chip
+        current_duty = 35 + ((j * 15) / x);
 
 
         // changing the PWM frequency 
@@ -119,8 +119,8 @@ void loop() {
         // AM modulation - randomizing Duty of the PWM wave
         // attention it is best jamming when it is change linearly between 25-35 percent
         // current_duty = random(25, 35);
-        // below it will swipe duty between 50-65 it is tailored to TC4420 chip
-        current_duty = 50 + ((j * 15) / x);
+        // below it will swipe duty between 35-50 it is tailored to TC4420 chip
+        current_duty = 35 + ((j * 15) / x);
 
         // changing the PWM frequency 
         update_pwm_advanced(i, current_duty);
