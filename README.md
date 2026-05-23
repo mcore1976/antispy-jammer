@@ -8,7 +8,7 @@ and here  http://people.cs.uchicago.edu/~ravenben/publications/pdf/ultra-chi20.p
 
 There are two versions of the jammer :
 
-- Obsolete : version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people. Less audible version is with TC4420 / IXDI614PI  ( MOSFET driver chip ) + MOSFET IRFB4115 + transducer + coils. 
+- Obsolete : version A with ATTINY85/Digispark only and audio amplifier TPA3116D2  + 20 transducers. This version is a bit audible and may not be preferred by some people. Less audible version is with TC4420 / IXDN614PI  ( NON INVERTING MOSFET driver chip ) + MOSFET IRFB4115 + transducer + coils. 
   
 - version B with ATTINY85/Digispark (or RP2040/ESP8266/ESP32)  + AD9833 Signal Generator + audio amplifier TPA3116D2 ( XH-M542 ) / or MOSFET driver chip + 20 transducers + additional components like Coils and Mosfet. This version is barely audible and has outstanding jamming capability for newest mobile phones like iPhone. 
 
@@ -60,7 +60,7 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 04.2026 - added Raspberry RP2040 / RP2035 jammer version without AD9833 module. This boards uses perfect PWM that is built in within RP2040 chip to generate the same signal as AD9833 in previous versions. This reduces the cost and improves reliability of the device ( I found many chinese AD9833 modules poor quality ). Added KICAD DESIGN files + GERBER files for the PCB (PCBWAY / JCLPCB ). 
 
-IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER OR BETTER USE MOSFET DRIVER TC4420/IXDI614PI + MOSFET IRFB4115 + COILS  AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
+IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER OR BETTER USE MOSFET DRIVER TC4420/IXDN614PI + MOSFET IRFB4115 + COILS  AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
 
 -------------------------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ Component list :
 - LM7805 - 5V voltage stabilizer when using boards : RP2040, ESP32, ESP8266 or discrete ATTINY85 chip
 - 1 x 10K Ohm potentiometer ( or resistor divider ) may be put between ATTINY85/ARDUINO/AD9833 audio output pins and audio amplifier board input pins (please notice that some audio amplifier board like XH-M542 already have potentiometer therefore it may not be needed) < optional >
 - AD9833 signal generator board for version B of the jammer, ATTENTION ! there is NO AD9833 option but only for RP2040 board
-- MOSFET IRF 4115 < optional > + MOSFET DRIVER TC4420/IXDI614PI + ZENER DIODE 18V - if no Audio amplifier TPA3116D2/PAM4803 used 
+- MOSFET IRF 4115 < optional > + MOSFET DRIVER TC4420/IXDN614PI + ZENER DIODE 18V - if no Audio amplifier TPA3116D2/PAM4803 used 
 - Diodes for 2AMP or more ( 1N400X series)  < optional >
 - 2 x 10K resistors 0.25Watt < optional >
 - When using MOSFET+DRIVER must additionally use High Current coils ( depending on availability : one 3.3 miliHenr coil per each 4 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers ) -  < optional >
@@ -162,7 +162,7 @@ See the video showing how this device works :
 - Re-created original version for Digispark : https://youtu.be/PcTkMWJb_Gs
 - The newest version microphone jamming beast with TPA3116D2 audio amplifier board - jamms even iPhones : https://youtu.be/8RgoYlrgW4s
 - The  version that supports jamming iPhones is available here : https://youtu.be/nIupojN8bRk?si=n5qydTXHUljC6Rzw
-- The final version with MOSFET driver chip TC4420/IXDI614PI , MOSFET transistor IRF4115 and set of 4.7 MiliHenr coils : https://youtu.be/p5w_T1xVSF8
+- The final version with MOSFET driver chip TC4420/IXDN614PI , MOSFET transistor IRF4115 and set of 4.7 MiliHenr coils : https://youtu.be/p5w_T1xVSF8
   
 
 
