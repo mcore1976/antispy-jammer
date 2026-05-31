@@ -32,7 +32,10 @@ void update_frequency_safe(uint32_t freq) {
     // Channel A will be ON for 0.25 * wrap 
     // Channel B will be ON for 0.25 * wrap 
     //uint32_t level = wrap / 8;   // for 12,5%
-    uint32_t level = wrap / 4; 
+    //uint32_t level = wrap / 4;   // for 25%
+    //uint32_t level = wrap / 3;   // for 33%
+    // Final best divider is 2.1 - 2.2
+    uint32_t level = wrap / 2.1; 
  
     // Channel A: setting wrap level 
     pwm_set_chan_level(slice_num, PWM_CHAN_A, level);
