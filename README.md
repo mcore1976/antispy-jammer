@@ -1,6 +1,7 @@
 # antispy-jammer
-Simple ultrasonic antispy voice recording jammer based on ATTINY13 / ATTINY85 / ATTINY45 / ATTINY25 with audio amplifier PAM8403 / TPA3116D2 module driving piezo ultrasonic transducers and AD9833 programmable signal generator. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.  
-You can also use different Arduino board like Raspberry Pi Pico RP2040-Zero, ESP8266/ESP32, Arduino Mini/Nano but you may need  to change pin numbers for the SPI connectivity depending on the boards you have.
+Simple ultrasonic antispy voice recording jammer based on ARDUINO module and power output stage for driving piezzo ultrasonic transducers. It prevents from unauthorized human speech recording by hidden microphones and voice assistants.  
+Initially ATTINY were used along with AD9833 programmable signal generator and audio amplifier PAM8403 / TPA3116D2 module driving piezo.  Using different Arduino boards like Raspberry Pi Pico RP2040-Zero, ESP8266/ESP32, Arduino Mini/Nano is also possible as long as they support hardware SPI connectivity.  
+However current development is focused on RP2040 + MOSFET stage as it has better cost and jamming efficiency.
 
 The project is based on following concept presented here : https://sandlab.cs.uchicago.edu/jammer/  , 
 here https://github.com/y-x-c/wearable-microphone-jamming  
@@ -16,14 +17,10 @@ There are two versions of the jammer :
 
 
 Please notice that some audio amplifiers like TPA3110 do not work correctly with ultrasonic transducers (only some "clicking" sound and no ultrasound). So far I have found  only PAM8403 and TPA3116D2 modules to work properly. Anyway I finally recommend to use only ORIGINAL TPA3116D2 due to its audio power (watch out for fake XH-M542 boards!).
-
-Instead of PAM8403 module I also try to use an auto-transformer coil ( 3 pin coil - I used 12uH/440 uH "buzzer inductor amplifier") + MOSFET transistor IRF4115, but the effect was still  worse than using Audio Amplifier board TPA3116D2 or setup with IRF4115+TC4420. However autotransformer can increase the voltage on transducers by 5-10 times and also give jamming effect. Autotransformer coil can be bought here : https://www.aliexpress.com/item/1005006405791965.html 
-
-If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 4 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. Additionally I suggest to add MOSFET IRF4115 with two 10K resistors voltage divider.  The advantage is outstanding performance on iPhones with this setup.
+If using TPA3116 module to achieve better results please add resonant high power coils as a setup : one 3.3 miliHenr coil per each 4 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers. 
 Due to many fake Audio amplifier boards XH-M542 I am using now only following setup :  TC4420 ( mosfer driver chip ) + MOSFET IRF4115 + transducer + coils
 
-You can use 20kHz-24mm diameter ultrasonic transducers (hard to get and very expensive but sometimes more effective for jamming on some of iPhones), 25kHz-16mm diameter transducers (default model) or 40 kHz (smallest effectivenes in jamming) but please keep in mind that ONLY 25KHz are working properly for all types of microphones/devices. The 40KHz have very limited jamming capability and should not be used, however the source code for this frequency is available in the repo. 
-
+Please keep in mind that ONLY 25KHz transducers and code are working properly for all types of microphones/devices. The 40KHz have very limited jamming capability and should not be used, however the source code for this frequency is available in the repo. 
 
 History of Version A of the jammer :
 
@@ -61,15 +58,27 @@ The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code )
 
 03.2026 - added 18V Zener Diode 1N5355B between Gate/Source of the MOSFET IRFB4115. Mosfet IRFB4115 has only 20V of max allowed voltage Ugs. Now it should not break so fast. 
 
+
+History of version C of the jammer :
+
 04.2026 - added Raspberry RP2040 / RP2035 jammer version without AD9833 module. This boards uses perfect PWM that is built in within RP2040 chip to generate the same signal as AD9833 in previous versions. This reduces the cost and improves reliability of the device ( I found many chinese AD9833 modules poor quality ). Added KICAD DESIGN files + GERBER files for the PCB (PCBWAY / JLCPCB ).
 
 06.2026 - added Raspberry RP2040 version with H-Bridge. This board uses PWM signal generation in RP2040 and 4 MOSFETS + 2 MOSFET drivers. The advantage is better iPhone jamming. The coil must be adjusted to the number of transducers and is connected in series with parallel set of transducers. Initial starting coil value is 47 MICROHENR for 20 transducers 20KHz. Added KICAD DESIGN files + GERBER files for the PCB (PCBWAY / JLCPCB ).
 
-IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  AUDIO AMPLIFIER with ORIGINAL CHIP TPA3116D2 (MODULE XH-M542) WHICH GIVES 50WATT OF AUDIO POWER OR BETTER USE MOSFET DRIVER TC4420/IXDN614PI + MOSFET IRFB4115 + COILS  AND MORE TRANSDUCERS LIKE 40 PER AUDIO CHANNEL ! 
+IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  MOSFET DRIVER TC4420/IXDN614PI + MOSFET IRFB4115 + COILS   OR  H-BRIDGE MOSFET VERSION AND MORE TRANSDUCERS LIKE 60-80 PER AUDIO CHANNEL ! 
+
+
+
 
 -------------------------------------------------------------------------------------
 
-Components used :
+VERSION C
+
+RP2040 chips  take over signal generation entirely with perfect PWM function. It improves stability of the solution and further reduces cost of manufacturing. This version operates only with MOSFET drivers and MOSFETs, there is no option to use audio amplifier board here. Use free software KICAD to see the schematic & PCB. The software can be flashed directly by dragging UF2 file to RP2040 USB disk drive ( RP2040 module  must have pressed BOOT key while attaching to the PC over USB). You do not even need Arduino environment to flash the SW.
+
+
+Components used version C :
+
 
 - 1 x Microcontroller ATTINY13 / ATTINY13A (not recommended) or ATTINY 85/45/25 (best), DIGISPARK board or any other Arduino with SPI interface support may be used instead of microcontroller ( RP2040-ZERO or WEMOS 8266 D1 MINI boards). ATTENTION - if using RP2040 board and PWM option you do not need to bud AD9833
 - 1 x 47 microfarad electrolytic capacitor ( it can be 1 - 470uF - for blocking distortions on power lines)
@@ -88,77 +97,7 @@ Components used :
 
 The transducer set may be connected directly to the TPA3116D2 output or through the diode and IRF MOSFET. 
 
--------------------------------------------------------------------------------------
-
-Available versions of the source code :
-
--------------------------------------------------------------------------------------
-
-AVR-GCC VERSIONS
-
-You only need the ATTINY13 or ATTINY85 chip not full Arduino module therefore the device can be smaller. In ATTINY85 version the internal clock has to be reconfigured to PLL clock, no DIV8 to 16MHz frequency ( AVRDUDE fuses : -U lfuse:w:0xf1:m -U hfuse:w:0xdd:m -U efuse:w:0xfe:m  ) like for Digispark device.  Also number of NOP commands is finetuned in the source code to fit exactly ~25kHZ frequency. USBASP and AVRDUDE have to be used for ATTINY chip programming. This is not Arduino code, however some bigger chips like ATMEGA 328P ( the one from ARDUINO ) also can be used.
-
-Version A : Please use schematic "antispy-jammer-enhanced-schematic.png" and following combinations of source code and compilation script :
-- for ATTINY85 : main4.c   +  compileattiny85v2 , main7.c   +  compileattiny85v3 
-- for ATTINY13 : main5.c   +  compileattinyv2 , main8.c  +   compileattinyv3
-
-Version B : This version uses AD9833 signal generator and ATTINY85 (ATTINY13 is too small)  therefore 
-- please use combination of  "main6.c"   +  "compileattiny6"  and schematic "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png" or the one with TPA3116D2 - "arduino-mic-supresor-ultrasonic-v2-ATTINY85-TPA3116.png" .
- 
- -------------------------------------------------------------------------------------
-
-ARDUINO VERSIONS :
-
-Please configure first your Arduino IDE for the DIGISPARK board as described here : https://gist.github.com/Ircama/22707e938e9c8f169d9fe187797a2a2c
-
-Version A :  ARDUINO DIGISPARK version - there is separated "mic-jammer.ino" version which is composed of ARDUINO DIGISPARK (ATTINY85) connected to PAM8403 MODULE and 20 transducers. It also gives same high range of jamming capability.  
-- for DIGISPARK version please use schematic "arduino-mic-supresor-ultrasonic.png"  or "mic-jammer-TPA3116D2.png"  and Arduino script "mic-jammer.ino".
-- In ARDUINO IDE go to File/Preferences/Additional board manager URL and put this URL : https://raw.githubusercontent.com/ArminJo/DigistumpArduino/master/package_digistump_index.json , then go to Menu Tools/Board and select Digistump AVR Boards / Digispark default 16.5 MHZ
- 
-Version B:  
-- Digispark with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2.png"  or "mic-jammer-AD9833-TPA3116D2.png"  and INO  script "mic-jammer-ad9833-digispark.ino". 
-- For different board than Digispark like Arduino Nano/Mini/Pro with AD9833 signal generator - please use schematic "arduino-mic-supresor-ultrasonic-v2-pro-mini.png" and INO script "mic-jammer-ad9833.ino".
-- For boards like RP2040/ESP32C3/ESP8266 use appropriate diagram and source code with the name of this board
--  
-Remember to use TPA3116D2 instead PAM8403 for better jamming capability and to use COILS and IRF 4115 MOSFET transistor + MOSFET driver chip TC4420.
-
-If you want to use different boards than provided setup it is also possible as long as SPI library is available for your board , but you will need to change SPI communication pins to match your board.
-
-For Arduino boards that do not have 5V voltage stabilizer on-board, you would also have to use Voltage Regulator LM7805 to feed particular board (like RP2040-Zero board , ESP32, ESP8266 )  and AD9833 module. The TPA3116D2 board needs to be powered from higher voltage - 12V taken before LM7805 is connected. If using TC4420 MOSFET driver and MOSFET IRF 4115 they need to be powered from higher voltage as well ( 18V is the maximum !!!)
-
 Version C:
-Only for RP2040 chips which take over signal generation entirely with perfect PWM function. It improves stability of the solution and further reduces cost of manufacturing. This version operates only with MOSFET drivers and MOSFETs, there is no option to use audio amplifier board here. Use free software KICAD to see the schematic & PCB. The software can be flashed directly by dragging UF2 file to RP2040 USB disk drive ( RP2040 module  must have pressed BOOT key while attaching to the PC over USB). You do not even need Arduino environment to flash the SW.
-
--------------------------------------------------------------------------------------
-
-AVR-GCC compilation information and chip flashing :
-
-"mainXX.c" source code is prepared in AVR-GCC and has to be uploaded with AVRDUDE to the ATTINY85/ATTINY13 chip.
-
-If you have Linux based machine you would need to setup the environment by installing following packages : "gcc-avr", "binutils-avr" (or sometimes just "binutils"), "avr-libc", "avrdude". For Ubuntu / Linux Mint you may use following command : "sudo apt-get install gcc-avr binutils-avr binutils avr-libc gdb-avr avrdude"
-
-If you have Windows machine, please follow this tutorial to install necessary packages : http://fab.cba.mit.edu/classes/863.16/doc/projects/ftsmin/windows_avr.html
-
-If you do not know how to connect cables for ATMEL ATTINY chip programming please follow my tutorial here : https://www.youtube.com/watch?v=7klgyNzZ2TI
-
-
-Compilation
-
-First version of the project :
-- files "compileattiny" and "main.c" for ATTINY13/ATTINY13A chip  (internal 9,6 MHz clock )   - initial version please do not use it anymore !
-- files "compileattiny85" and "main2.c" for ATTINY85 chip  (internal 16MHz PLL clock)  - initial version please do not use it anymore !
-
-Version A  : 
-- use "compileattinyv2" and "main5.c" files for ATTINY13/ATTINY13A chip - FM modulation only (internal 9,6 MHz clock )
-- use "compileattinyv3" and "main8.c" files for ATTINY13/ATTINY13A chip - AM/PWM signal modulation (internal 9,6 MHz clock )
-- use "compileattiny85v2" and "main4.c" files for ATTINY85 chip - FM modulation only  (internal 16MHz PLL clock)
-- use "compileattiny85v3" and "main7.c" files for ATTINY85 chip  - AM/FM signal modulation (internal 16MHz PLL clock)
- 
-
-Version B (with AD9833 board) :
-- use "compileattiny6" and "main6.c" files for ATTINY85 chip  (internal 16MHz PLL clock) + AD9833 signal generator
-
-To compile the code for ATTINY use relevant "compileattinyXXX" script ( example : under linux "chmod +rx compileattiny && ./compileattiny ") for AVR-GCC environment compilation and flashing with AVRDUDE and USBASP cable.  
 
 
 -------------------------------------------------------------------------------------
