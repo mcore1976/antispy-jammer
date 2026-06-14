@@ -25,7 +25,7 @@ History of version C of the jammer :
 
 04.2026 - added Raspberry RP2040 / RP2035 jammer version without AD9833 module. This boards uses perfect PWM that is built in within RP2040 chip to generate the same signal as AD9833 in previous versions. This reduces the cost and improves reliability of the device ( I found many chinese AD9833 modules poor quality ). Added KICAD DESIGN files + GERBER files for the PCB (PCBWAY / JLCPCB ).
 
-06.2026 - added Raspberry RP2040 version with H-Bridge. This board uses PWM signal generation in RP2040 and 4 MOSFETS + 2 MOSFET drivers. The advantage is better iPhone jamming. The coil must be adjusted to the number of transducers and is connected in series with parallel set of transducers. Initial starting coil value is 47 MICROHENR for 20 transducers 20KHz. Added KICAD DESIGN files + GERBER files for the PCB (PCBWAY / JLCPCB ).
+06.2026 - added Raspberry RP2040 version with H-Bridge. This board uses PWM signal generation in RP2040 and 4 MOSFETS + 2 MOSFET drivers. The advantage is better iPhone jamming. The coil must be adjusted to the number of transducers and is connected in SERIES with parallel set of transducers. Initial starting coil value is 47 MICROHENR for 20 transducers 25KHz (2nF each). The more transducers the lower the inductance should be.  Added KICAD DESIGN files + GERBER files for the PCB (PCBWAY / JLCPCB ).
 
 IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU MUST USE  MOSFET DRIVER TC4420/IXDN614PI + MOSFET IRFB4115 + COILS   OR  H-BRIDGE MOSFET VERSION AND MORE TRANSDUCERS LIKE 60-80 PER AUDIO CHANNEL ! 
 
