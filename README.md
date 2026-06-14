@@ -46,7 +46,7 @@ Components used version C :
 - set of 25kHZ (resonance frequency is important !)  ultrasonic piezo transducers like NU25C16T-1, 25kHz or equivalent. Minimum 15-20 for jamming efficiency. Recommended 60+ transducers
 - power source - minimum 2x18650 LiIon cells + XL6009 step-up voltage converter ( for single MOSFET solution ) or 12V-15V / 2A power brick ( for H-Bridge solution ). Recommended powering voltage for both versions is 15V. Do not go over 18V (you will break MOSFETs)
 - LM7805 - 5V voltage stabilizer for powering RP2040
-- MOSFET DRIVERS : TC4420 for single MOSFET solution,   2 x IR2104 / IR2103 for H-Bridge ( watch out for counterfeits which are IR2103! For counterfeits you need to short pin 2&3 and detach pin 3 from VCC! )
+- MOSFET DRIVERS : TC4420 for single MOSFET solution,   2 x IR2104 / IR2103 for H-Bridge ( watch out for counterfeits which are IR2103  https://www.tinytransistors.net/2021/03/14/fake-ir2104/  ! For counterfeits of IR2104 or when using IR2103 you need to short pin 2&3 and detach pin 3 from VCC on each IR210X chip! )
 -  4 x 10 Ohm / 0.25W(or more)  for H-Bridge drivers output ( between IR210X and MOSFET Gate pin)
 -  MOSFET transistors : 1 x IRF 4115 for single MOSFET solution OR for H-Bridge MOSFET solution : 4 x IRF510N or 4 x IRFZ24N or 4 x IRFZ44N,  4 x IR2104... You may even use the cheapest counterfeits from Aliexpress... 
 -  Diodes : 2 ultrafast Schottky diodes UF4007 for Single MOSFET option,  optional Zener diode 18V (  to protect MOSFET IRF4115 from electrostatic discharge (ESD) and overvoltage on Gate pin)  and High power Schottky for single MOSFET solution
