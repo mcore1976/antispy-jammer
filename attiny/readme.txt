@@ -1,5 +1,44 @@
 These are old project files, currently obsolete. 
 
+
+History of Version A of the jammer :
+
+At the beginning of this project ("main.c" and "main2.c" source files)  there was a set of resistors used to build 5-bit Digital to Analogue converter ( R-2R resistor ladder DAC : check here https://www.electronics-tutorials.ws/combination/r-2r-dac.html ) to create sinusoidal audio wave and audio amplification stage with 2 bipolar transistors (NPN+PNP bridge - class B amplifier) for driving piezzoelectric ultrasonic transducers : https://www.electronics-tutorials.ws/amplifier/amp_6.html (they introduce cross-over distortion  and have very small power). The Sinusoidal waveform parameters have been calculated using Libreoffice Calc / Microsoft Excell and can be changed to any other waveform if necessary.The C code was utilizing whole available PINs in ATTINY PORTB (PB0-PB4) to create DAC for sine wave or pulse wave depending on source code version.  I have uploaded this code here only for reference, maybe someone would like to play with it for different purposes than audio jamming.
+
+However after testing first prototype  it turned out that the jamming power is too low because center frequency 25kHz has to be FM modulated in some manner. Finally I had to use PAM8403 amplifier module ( see diagram with "enhanced" version) for 6 Watt output power and modify lookup table and code to construct square audio wave with pseudo white-noise bias that modulates center frequency of ultrasonic transducers. In this version the 25kHz frequency is randomly shifted in 0,4 kHz offsets within 23-27 kHz range and that gives awesome results in jamming (up to 4-5 meters of jamming).  Please notice that even 6 Watt of audio power is too low to sucesfully jamm from greater distance so I ended up with using TPA3116D2 module - 100Watt audio power amplifier which seems to work the best with piezzo transducers after all.
+
+Files "main4.c"/"main5.c"  are using Digital to Analog Converter for FM 25kHz signal modulation only , while files "main7.c"/"main8.c" are using random PWM and amplitude modulation to generate the noise (in test main7.c/main8.c work better than main4.c/main5.c files). 
+If using files with AM modulation please tune signal gain using potentiometer not to get it distorted.
+The microcontroller ATTINY13 has its fuses set to operate with 9,6MHz internal clock while ATTINY85 has fuses set to operate on 16MHz clock as in the Digispark module. 
+
+File "main6.c" and its variants are more like version B of the jammer (used to miniaturize the jammer) however they require to use AVRGCC environment + USBASP programmer for ATTINY chip. The ATTINY85 chip is connected to AD9833 signal generator and further to TPA 3116 audio amplifier and set of transducers and coils. The ATTINY85 and AD9833 are powered from 5V through LM7805 while TPA3116 is powered directly from 12V or higher.  I do recommend this option since it has a better performance on jamming iPhones. 
+
+
+History of version B of the jammer :
+
+20.02.2022 - I have managed to re-create original design with only : ATTINY85 chip + AD9833 signal generator + PAM8403 audio amplifier and set of transducers.
+The code "main6.c" and the script "compileattiny6" is prepared for this purpose, the diagram will be "arduino-mic-supresor-ultrasonic-v2-ATTINY85.png". 
+Also relevant INO scripts and schematic of this re-created design are available for any other Arduino supporting SPI serial bus connectivity. For ARDUINO version please use diagrams "arduino-mic-supresor-ultrasonic-v2.png" and "arduino-mic-supresor-ultrasonic-v2-pro-mini.png"
+
+27.01.2023 - Updated original programming - together with random FREQUENCY shifting I am also using random PHASE shifting which gives better effectivenes for high-end phones despite the signal is a little bit audible..  This is only valid for versions which use  AD9833 signal generator.
+
+12.04.2023 - The code for Digispark/ATTINY85 + AD9833 + TPA3116/PAM8403 was changed to support INFRASOUND 5-25Hz random FM modulation over 25KHz ULTRASOUND carrier. This gives the best result for jamming iPhones and on the high-end phones and the signal is barely audible by human ear when demodulated on obstacles. However such approach cannot be introduced into the design which does not use AD9833 due to speed limitation of the ATTINY85 chip. If you want to jam iPhones I would suggest to use design : Digispark + AD9833 + TPA3116 + at least 12 transducers
+The code uses SQUARE PULSE to generate the wave ( AD_SQUARE option in the code ) which gives best overall jamming result, but you can easily change it to less audible option SINUSOIDAL WAVE ( AD_SINE ) or TRIANGLE WAVE ( AD_TRIANGLE ). Sinusoidal signal has lower jamming capability but it is almost not audible at all.
+
+24.08.2023 - The code for Digispark/ATTINY85 + AD9833 + TPA3116/PAM8403 was changed to use pseudo-number generator ( rand() function ) for infrasound 7Hz-15Hz and AD_SINE option on AD9833. The audio signal is now barely hearable but the device keeps good jamming efficiency.
+
+17.09.2023 - The code for Digispark/ATTINY85 + AD9833 + TPA3116/PAM8403 was changed to use pseudo-number generator ( rand() function ) for both frequency swing 24000-26000 Hz and infrasound 5Hz-25Hz and AD_SINE option on AD9833. This code combines both types of jamming infrasound + white noise. However please find that random infrasound is good only for Android based phones, for iPhones the best is to use static 45-50Hz FM modulation of ultrasound (found empirically).
+
+05.2024 - The code for ATTINY85 + AD9833 us using FM type modulation and swinging between 24-26 kHz. The frequency increases with SAW like steps with random CAP between 20-50Hz.  Additionaly there are hardware differences - using COILS and MOSFET IRF4115 for separating coils. Please notice that using coils, diode and MOSFET IRF is optional but may improve iPhone jamming capability.
+
+08.2025 - added Raspberry Pi Pico RP2040-ZERO , ESP8266 WEMOS D1 MINI , ESP32C3 SUPER MINI + AD9833 module versions because of Digispark boards shortage on the market. Added connection diagrams for these modules.
+
+11.2025 - added MOSFET DRIVER + MOSFET + COILS instead of using TPA3116D2 boards, added connection diagrams for this setup for newer boards ESP8266 WEMOS D1 MINI , ESP32C3 SUPER MINI , RP2040-ZERO 
+
+03.2026 - added 18V Zener Diode 1N5355B between Gate/Source of the MOSFET IRFB4115. Mosfet IRFB4115 has only 20V of max allowed voltage Ugs. Now it should not break so fast. 
+
+
+
 VERSION A & VERSION B :
 
 - 1 x Microcontroller ATTINY13 / ATTINY13A (not recommended) or ATTINY 85/45/25 (best), DIGISPARK board or any other Arduino with SPI interface support may be used instead of microcontroller ( RP2040-ZERO or WEMOS 8266 D1 MINI boards). ATTENTION - if using RP2040 board and PWM option you do not need to bud AD9833
