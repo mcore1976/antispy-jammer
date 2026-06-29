@@ -71,7 +71,7 @@ void loop() {
     // Swiping 26kHz -> 24kHz
     x = random(20, 50);
     j = 1;
-    i = 25150;
+    i = 25250;
 
     
     while (i >= 24750 ) {
