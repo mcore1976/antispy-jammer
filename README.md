@@ -52,8 +52,8 @@ Components used version C :
 -  MOSFET transistors : 1 x IRF 4115 for single MOSFET solution OR for H-Bridge MOSFET solution : 4 x IRF510N or 4 x IRFZ24N or 4 x IRFZ44N,  4 x IR2104... You may even use the cheapest counterfeits from Aliexpress... 
 -  Diodes : 2 ultrafast Schottky diodes UF4007 for Single MOSFET option,  optional Zener diode 18V (  to protect MOSFET IRF4115 from electrostatic discharge (ESD) and overvoltage on Gate pin)  and High power Schottky for single MOSFET solution
 -  H-Bridge MOSFET solution needs additional 2 x 1uF MLCC caps for IR210X chips 
-- Coils for single MOSFET solution - high current coils  depending on availability : one 3.3 miliHenr coil per each 4 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers, or single big coil 1mH / 6 Amp per each 20 transducers. Coils needs to be put IN PARALLEL to the transducers here. 
-- Coils fo H-Bridge solution -  ONE coil 33uH - 47uH /10A conencted IN SERIES to the grup of parallel connected 20 transducers. In case more transducers used, you need to DECREASE the inductance by unwinding wraps. This version needs some experimentation on number of wire wraps on the coil. Adjust it to get highest possible voltage on transducers. 
+- Coils for single MOSFET solution - high current coils  depending on availability : one 3.3 miliHenr coil per each 4 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers, or single big coil 1mH / 10 Amp per each 20 transducers. Coils needs to be put IN PARALLEL to the parallel connected transducers here. 
+- Coils fo H-Bridge solution -  ONE coil 5uH - 33uH /10A conencted IN SERIES to the grup of parallel connected 20+ transducers. If more transducers used, you need to DECREASE the inductance by unwinding wraps. This version needs some experimentation on number of wire wraps on the coil. Adjust it to get highest possible voltage on transducers. 
 
 
 -------------------------------------------------------------------------------------
