@@ -6,8 +6,7 @@
   
     Boards needed : 
     Arduino Raspberry Pi Pico 2040 - RP2040-ZERO or RP2040-ONE from Waveshare
-    TPA3116D2 board - audio amplifier module + potentiometer
-    OR TC4420 + MOSFET IRF4115
+    TC4420 + MOSFET IRF4115
 
     Attention : Use Linux based PC and Arduino Pi Pico Earle Philhower Core for compilation
     Board Manager link for Arduino :
@@ -16,12 +15,9 @@
     CONNECTION EXAMPLE FOR ARDUINO RP2040-ZERO
     --------
     
-    GP1 PIN OF RP2040-ZERO  --> LEFT AUDIO IN + RIGHT AUDIO IN   / or INPUT PIN OF TC4420 MOSFET DRIVER
-    GND  --> AUDIO GND
+    GP1 PIN OF RP2040-ZERO  -->  INPUT PIN OF TC4420 MOSFET DRIVER
 
-    ARDUINO HAS TO BE POWERED FROM 5V THROUGH LM7805 VOLTAGE STABILIZER OR BUCK-DOWN VOLTAGE CONVERTER
-    TPA3116 HAS TO BE CONNECTED TO 12V AND GND
-        
+    ARDUINO HAS TO BE POWERED FROM 5V THROUGH LM7805 VOLTAGE STABILIZER OR BUCK-DOWN VOLTAGE CONVERTER        
     
 */
 
@@ -100,10 +96,10 @@ void loop() {
         if (j == 0) j = 1;
 
         // adding random stops to the frequency swing
-        if ( (i % random(2,10)) == 0 )   delayMicroseconds(random(10,100));
+        if ( (i % random(2,10)) == 0 )   delayMicroseconds(random(5,75));
 
         // when delay less than 50usec the jammer becomes audible but jams better
-        delayMicroseconds(70);        
+        delayMicroseconds(75);        
     }
 
 
@@ -123,10 +119,10 @@ void loop() {
         if (j == 0) j = 1;
 
         // adding random stops to the frequency swing
-        if ( (i % random(2,10) ) == 0 )   delayMicroseconds(random(10,100));
+        if ( (i % random(2,10) ) == 0 )   delayMicroseconds(random(5,75));
 
         // when delay less than 50usec the jammer becomes audible but jams better
-        delayMicroseconds(70);
+        delayMicroseconds(75);
     }
 
     delayMicroseconds(random(10,100));
