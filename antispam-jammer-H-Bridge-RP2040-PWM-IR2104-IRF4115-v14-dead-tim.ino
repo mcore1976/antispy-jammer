@@ -3,12 +3,15 @@
     Target: RP2040-ZERO / RP2040-ONE
     Core: Earle Philhower RP2040 Core
     (C) Adam Loboda 2026
-    version 13 - FM random modulation (sinusoidal wave)  for bobble sounds
+    version 14 - FM random modulation (sinusoidal wave)  for bobble sounds,
+                 chopper style overloading AGC in smartphones
 */
 
 #include <Arduino.h>
 #include "hardware/pwm.h"  
 #include "hardware/clocks.h"
+#include "hardware/adc.h"
+
 
 const int PIN_NORMAL = 0;    // GP0
 const int PIN_INVERTED = 1;  // GP1
@@ -51,13 +54,38 @@ void setup() {
     pwm_init(slice_num, &config, true);
 
     update_frequency_safe(BASE_CARRIER);
-    randomSeed(1234);
+
+
+
+    // Randomization seed with ADC input
+    adc_init();
+    adc_gpio_init(26); 
+    adc_select_input(0); // channel 0 (GP26) as an input
+
+    uint32_t seed = 0;
+    for (int i = 0; i < 16; i++) {
+        seed = (seed << 2) ^ adc_read();
+        delayMicroseconds(50); };
+   
+    randomSeed(seed);        
+//    randomSeed(1234);
 }
 
 void loop() {
+    unsigned long startMicros, randomfrequencyDurationMicros;
+    uint16_t randomfrequency ;
+
+    // randomization seed with use of ADC input pin 0 - GP26
+    uint32_t seed = 0;
+    for (int i = 0; i < 16; i++) {
+        seed = (seed << 2) ^ adc_read();
+        delayMicroseconds(50);  };
+   
+    randomSeed(seed);
+  
     // Here we pick a random INFRASOUND frequency for FM modulation
     //uint16_t randomfrequency = random(1,25);
-    uint16_t randomfrequency = random(20,50);
+    randomfrequency = random(20,50);
         
     // Random human speech wovel frequency to trick smartphones DSP
     //int vowelIdx = random(0, VOWEL_COUNT);
@@ -66,10 +94,10 @@ void loop() {
     // Here we pick random time of this frequency duration
     // you may play with this range to have better jamming results on phones mic
     //unsigned long randomfrequencyDurationMicros = random(3, 7) * 1000;
-    unsigned long randomfrequencyDurationMicros = random(1, 10) * 1000;
+    randomfrequencyDurationMicros = random(1, 10) * 1000;
 
     // We gather starting time in microseconds for the precision of FM modulation
-    unsigned long startMicros = micros();
+    startMicros = micros();
 
     // Delta-time for the loop interval = 0.000040 sec  40 microseconds - has to match delay at the end of loop
     const float dt = 0.000040;
@@ -78,13 +106,13 @@ void loop() {
 
          // We calculate FM phase increase during this loop cycle for previusly selected modulation frequency
          //  dPhi = 2 * PI * f * dt
-         float phase_increment = 2.0 * PI * randomfrequency * dt;
+         float phase_increment = 6.28 * randomfrequency * dt;
 
          // Accumulating phase value so the FM modulation has no glithces 
          fm_phase += phase_increment;
 
          // Adjusting phase so it would match range 0 - 2PI
-         if (fm_phase >= 2.0 * PI) fm_phase -= 2.0 * PI;
+         if (fm_phase >= 6.28 ) fm_phase = fm_phase - 6.28;
 
         // FM modulation to create the sound upon bearer piezo frequency 
         // Weight 1000 adjusted to fit within piezo acceptable frequency  
