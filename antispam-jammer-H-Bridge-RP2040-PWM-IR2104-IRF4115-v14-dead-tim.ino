@@ -56,15 +56,17 @@ void setup() {
 
 void loop() {
     // Here we pick a random INFRASOUND frequency for FM modulation
-    uint16_t randomfrequency = random(1,15);
-    
+    //uint16_t randomfrequency = random(1,25);
+    uint16_t randomfrequency = random(20,50);
+        
     // Random human speech wovel frequency to trick smartphones DSP
     //int vowelIdx = random(0, VOWEL_COUNT);
     //uint16_t randomfrequency = formants[vowelIdx];
 
     // Here we pick random time of this frequency duration
     // you may play with this range to have better jamming results on phones mic
-    unsigned long randomfrequencyDurationMicros = random(3, 7) * 1000;
+    //unsigned long randomfrequencyDurationMicros = random(3, 7) * 1000;
+    unsigned long randomfrequencyDurationMicros = random(1, 10) * 1000;
 
     // We gather starting time in microseconds for the precision of FM modulation
     unsigned long startMicros = micros();
@@ -87,7 +89,7 @@ void loop() {
         // FM modulation to create the sound upon bearer piezo frequency 
         // Weight 1000 adjusted to fit within piezo acceptable frequency  
         // piezo range is  24000 - 26000 Hz (25000 +/- 1000 Hz)
-         long fm_offset = (sin(fm_phase) * 1000);
+         long fm_offset = (sin(fm_phase) * 3000);
          uint32_t current_freq = BASE_CARRIER + fm_offset;
         
         // Update the frequency
