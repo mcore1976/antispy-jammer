@@ -84,11 +84,12 @@ void setup() {
     adc_gpio_init(26); 
     adc_select_input(0); // channel 0 (GP26) as an input
 
+    // we take the 2 LSB bits and shift the output 16 times to achieve 32bit random integer
     uint32_t seed = 0;
     for (int i = 0; i < 16; i++) {
-        seed = (seed << 2) ^ adc_read();
-        delayMicroseconds(50); };
-   
+        seed = (seed << 2) ^ (adc_read() & 0x03);
+        delayMicroseconds(100); };
+  
     randomSeed(seed);
 }
 
@@ -97,12 +98,12 @@ void loop() {
     unsigned long startMicros, randomfrequencyDurationMicros;
     uint16_t randomfrequency ;
 
-    // randomization seed with use of ADC input pin 0 - GP26
+    // we take the 2 LSB bits and shift the output 16 times to achieve 32bit random integer
     uint32_t seed = 0;
     for (int i = 0; i < 16; i++) {
-        seed = (seed << 2) ^ adc_read();
-        delayMicroseconds(50);  };
-   
+        seed = (seed << 2) ^ (adc_read() & 0x03);
+        delayMicroseconds(100); };
+  
     randomSeed(seed);
   
     // Here we pick a random INFRASOUND frequency for FM modulation
