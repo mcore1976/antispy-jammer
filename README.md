@@ -55,7 +55,7 @@ Components used version C :
 -  Diodes : 2 ultrafast Schottky diodes UF4007 for Single MOSFET option,  optional Zener diode 18V (  to protect MOSFET IRF4115 from electrostatic discharge (ESD) and overvoltage on Gate pin)  and High power Schottky for single MOSFET solution
 -  H-Bridge MOSFET solution needs additional 2 x 1uF MLCC caps for IR210X chips 
 - Coils for single MOSFET solution - high current coils  depending on availability : one 3.3 miliHenr coil per each 4 transducers OR one  4.7 miliHenr coil per each 5 transducers OR one  6.8 miliHenr coil per each 6 transducers, or single big coil 1mH / 10 Amp per each 20 transducers. Coils needs to be put IN PARALLEL to the parallel connected transducers here. 
-- Coils fo H-Bridge solution -  ONE coil 5uH - 33uH /10A conencted IN SERIES to the grup of parallel connected 20+ transducers. If more transducers used, you need to DECREASE the inductance by unwinding wraps. This version needs some experimentation on number of wire wraps on the coil. Adjust it to get highest possible voltage on transducers. 
+- Coils for H-Bridge solution -  ONE coil 5uH - 22uH /10A conencted IN SERIES to the group of parallel connected 20+ transducers. If more transducers used, you need to DECREASE the inductance by unwinding wraps. This version needs some experimentation on number of wire wraps on the coil. Adjust it to get highest possible voltage on transducers. Unwind the wraps from the coil and periodically check the signal voltage with oscilloscope.  
 
 
 -------------------------------------------------------------------------------------
