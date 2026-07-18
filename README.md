@@ -28,6 +28,8 @@ History of version C of the jammer :
 
 06.2026 - added Raspberry RP2040 version with H-Bridge. This board uses PWM signal generation in RP2040 and 4 MOSFETS + 2 MOSFET drivers. The advantage is better iPhone jamming. The coil must be adjusted to the number of transducers and is connected in SERIES with parallel set of transducers. Initial starting coil value is 47 MICROHENR for 20 transducers 25KHz (2nF each). The more transducers the lower the inductance should be.  Added KICAD DESIGN files + GERBER files for the PCB (PCBWAY / JLCPCB ).
 
+07.2026 - changed the code to use Sinusoidal wave FM modulation of 25KHz bearer. It turned out that random 20-50Hz sinsusoidal modulation signal in small samples (from 1 to 10 milisecond timing) makes the Automatic Gain Control in the phones go out of sync and gives outstanding results in jamming expensive phones. 
+
 IF YOU WANT TO INCREASE JAMMING CAPABILITY YOU CAN USE MORE TRANSDUCERS LIKE 60-80 PER AUDIO CHANNEL FOR BOTH VERSIONS :  MOSFET DRIVER TC4420/IXDN614PI + MOSFET IRFB4115 + COIL   OR  H-BRIDGE MOSFET + COIL   ! 
 
 
@@ -67,6 +69,7 @@ See the video showing how this device works :
 - The version that supports jamming iPhones is available here : https://youtu.be/nIupojN8bRk?si=n5qydTXHUljC6Rzw
 - The version with MOSFET driver chip TC4420/IXDN614PI , MOSFET transistor IRF4115 and set of 4.7 MiliHenr coils : https://youtu.be/p5w_T1xVSF8
 - 2 versions without AD9833 - single MOSFET+driver (working on older phones), full H-bridge 4 MOSFETs + 2 drivers (working on newer iPhones ) : https://youtu.be/84xKVirOIlM
+- Jamming iPhone 17 example with H-Bridge jammer version : https://youtube.com/shorts/-bGY1aQV2Jw?si=C__vO6hbOhsY6oaD
   
 
 
